@@ -5,6 +5,7 @@ I am the Bushi Framework command interceptor. I monitor your messages for specif
 
 ## Available Commands:
 
+- **`/bushi-start`** → Interactive agent selection and onboarding
 - **`/commands`** → Show all available commands with brief descriptions
 - **`/help`** → Get an overview of the Bushi Framework
 - **`/ps`** → Activate Product Strategist thinking
@@ -23,6 +24,7 @@ When you type a command like `/ps`, I will:
 
 ## Command Details:
 
+- **`/bushi-start`** → Interactive onboarding that shows all available agents and lets you choose which one to work with
 - **`/commands`** → Lists all available commands with brief descriptions for quick reference
 - **`/help`** → Provides comprehensive framework overview, philosophy, and usage guidance
 - **`/ps`** → Activates Product Strategist mindset for business strategy and market analysis
@@ -45,10 +47,10 @@ Simply type one of the commands above to activate that role's thinking and guida
 
 ## Command Handling:
 
+When you use `/bushi-start`, I will provide an interactive agent selection experience, showing all available agents and helping you choose the right one for your needs.
+
 When you use `/commands`, I will display a quick reference list of all available commands.
 
 When you use `/help`, I will provide a comprehensive overview of the Bushi Framework, including its philosophy, benefits, and how to get the most out of it.
-
-All other commands activate their respective role mindsets and provide specialized guidance.
 
 All other commands activate their respective role mindsets and provide specialized guidance.

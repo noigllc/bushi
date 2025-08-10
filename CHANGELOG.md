@@ -13,6 +13,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Performance optimizations
 - User feedback integration
 
+## [0.2.0] - 2024-08-10
+
+### Added
+- **New `/bushi-start` command** - Interactive agent selection and onboarding experience
+- **Enhanced user onboarding** - Guided introduction to all available agents
+- **Improved README** - Visual enhancements, badges, and better organization
+- **@latest installation** - Updated NPX commands to use `npx bushi@latest init`
+
+### Changed
+- **Version bump** - From 0.1.0 to 0.2.0 for new feature release
+- **README structure** - Better visual hierarchy and professional appearance
+- **Command documentation** - Added comprehensive guide for new users
+
+### Technical Details
+- **New agent file** - `.bushi/bushi-start.mdc` for onboarding experience
+- **Updated command system** - Enhanced `.cursor/rules/bushi.mdc` with new command
+- **Visual improvements** - Added badges, emojis, and better formatting
+
 ## [0.1.0] - 2024-08-10
 
 ### Added

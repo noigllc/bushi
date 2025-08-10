@@ -5,7 +5,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Version](https://img.shields.io/badge/version-0.2.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Node](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)
 ![Platform](https://img.shields.io/badge/platform-Cursor%20IDE-orange)
@@ -21,8 +21,10 @@ A comprehensive framework for solo developers/entrepreneurs to build micro-SaaS 
 **Run this command inside your existing project directory:**
 
 ```bash
-npx bushi init
+npx bushi@latest init
 ```
+
+**Note:** Using `@latest` ensures you get the most recent version.
 
 **Important:** This command must be run from within an existing project folder. It will create the necessary framework files in your current project.
 
@@ -35,12 +37,14 @@ npx bushi init
 
 2. **Initialize Bushi Framework:**
    ```bash
-   npx bushi init
+   npx bushi@latest init
    ```
 
 3. **Open your project in Cursor IDE**
 
-4. **Start using the agents with commands like `/ps`, `/pd`, `/pb`, etc.**
+4. **Start using the agents:**
+   - **New user?** Run `/bushi-start` to preview available agents
+   - **Know what you need?** Use commands like `/ps`, `/pd`, `/pb`, etc.
 
 ---
 
@@ -67,6 +71,7 @@ Bushi Framework is a set of "mental roles" that can be activated when needed, el
 
 | Command | Agent | Purpose |
 |---------|-------|---------|
+| `/bushi-start` | 🚀 **Framework Onboarding** | Interactive agent selection and guidance |
 | `/ps` | 🎯 **Product Strategist** | Business strategy, market analysis, idea generation |
 | `/pd` | 🎨 **Product Designer** | UX/UI, user research, wireframing |
 | `/pb` | 🏗️ **Product Builder** | Technical architecture, development, project management |
@@ -76,6 +81,9 @@ Bushi Framework is a set of "mental roles" that can be activated when needed, el
 ---
 
 ## Agent Overview
+
+### 🚀 Framework Onboarding
+Your friendly guide to Bushi Framework. Run `/bushi-start` to get an interactive overview of all available agents and choose the right one for your current needs. Perfect for new users or when you're unsure which agent to use.
 
 ### 🎯 Product Strategist
 Your business strategy expert. Helps you brainstorm new ideas, validate existing concepts, analyze markets, and define business models. Perfect for the early stages of product development.

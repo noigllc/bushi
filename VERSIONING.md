@@ -4,7 +4,7 @@
 
 ```
 MAJOR.MINOR.PATCH
-  0  .  1  .  0
+  0  .  2  .  0
 ```
 
 ## 🚀 **Current Phase: Development (0.x.x)**
@@ -17,7 +17,7 @@ MAJOR.MINOR.PATCH
 
 ## 📊 **Version Bump Rules**
 
-### **Patch Updates (0.1.0 → 0.1.1)**
+### **Patch Updates (0.2.0 → 0.2.1)**
 **When to bump:** Bug fixes, minor improvements, documentation updates
 **Examples:**
 - Fix typos in agent prompts
@@ -28,7 +28,7 @@ MAJOR.MINOR.PATCH
 
 **Impact:** Low risk, safe to update
 
-### **Minor Updates (0.1.0 → 0.2.0)**
+### **Minor Updates (0.2.0 → 0.3.0)**
 **When to bump:** New features, new agents, significant improvements
 **Examples:**
 - Add new agent capabilities
@@ -39,7 +39,7 @@ MAJOR.MINOR.PATCH
 
 **Impact:** Medium risk, may have new features to test
 
-### **Major Updates (0.1.0 → 1.0.0)**
+### **Major Updates (0.2.0 → 1.0.0)**
 **When to bump:** Breaking changes, major restructuring, stable release
 **Examples:**
 - Change command syntax (e.g., `/ps` to `/product-strategist`)
@@ -62,9 +62,9 @@ npm link
 npm unlink
 
 # Update version based on changes
-npm version patch    # 0.1.0 → 0.1.1
-npm version minor    # 0.1.0 → 0.2.0
-npm version major    # 0.1.0 → 1.0.0
+npm version patch    # 0.2.0 → 0.2.1
+npm version minor    # 0.2.0 → 0.3.0
+npm version major    # 0.2.0 → 1.0.0
 
 # Build and publish
 npm run build
@@ -74,9 +74,9 @@ npm publish
 ### **2. Version Decision Tree**
 ```
 Changes Made?
-├── Bug fixes only? → patch (0.1.0 → 0.1.1)
-├── New features? → minor (0.1.0 → 0.2.0)
-└── Breaking changes? → major (0.1.0 → 1.0.0)
+├── Bug fixes only? → patch (0.2.0 → 0.2.1)
+├── New features? → minor (0.2.0 → 0.3.0)
+└── Breaking changes? → major (0.2.0 → 1.0.0)
 ```
 
 ## 🎯 **Roadmap to 1.0.0**
@@ -88,9 +88,10 @@ Changes Made?
 - [x] Cursor rules integration
 
 ### **Phase 2: Enhancement (0.2.x)**
-- [ ] Agent optimization and testing
-- [ ] User feedback integration
-- [ ] Documentation improvements
+- [x] Agent optimization and testing
+- [x] User feedback integration
+- [x] Documentation improvements
+- [x] New onboarding experience
 - [ ] Performance optimizations
 
 ### **Phase 3: Stabilization (0.3.x)**
@@ -109,6 +110,7 @@ Changes Made?
 
 | Version | Date | Changes | Type |
 |---------|------|---------|------|
+| 0.2.0 | 2024-08-10 | New /bushi-start command, enhanced README, @latest installation | Minor |
 | 0.1.0 | 2024-08-10 | Initial NPX package, CLI, basic framework | Initial |
 | - | - | - | - |
 
