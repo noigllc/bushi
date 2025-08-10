@@ -1,14 +1,12 @@
 # 🚀 Bushi Framework
-> Build Shit Fast
-A comprehensive framework for solo developers/entrepreneurs to build micro-SaaS and indie hacking businesses.
+## Build Shit Fast
+> A comprehensive framework for solo developers/entrepreneurs to build micro-SaaS and indie hacking businesses.
 
----
 
 ## 🎯 **Philosophy**
 
 **Build Shit Fast** - No overthinking, no role-switching overhead, just focused expertise when you need it.
 
----
 
 ## 🚀 **Quick Start**
 
@@ -30,7 +28,6 @@ A comprehensive framework for solo developers/entrepreneurs to build micro-SaaS 
 
 **Note:** Using `@latest` ensures you get the most recent version.
 
----
 
 ## ✨ **What Makes Bushi Special**
 
@@ -39,7 +36,6 @@ A comprehensive framework for solo developers/entrepreneurs to build micro-SaaS 
 - 🧠 **Smart Context** - Agents understand your project and goals
 - ⚡ **No Overhead** - Eliminates role-switching mental friction
 
----
 
 ## What It Is
 
@@ -49,7 +45,6 @@ Bushi Framework is a set of "mental roles" that can be activated when needed, el
 
 **Currently only works with Cursor IDE** - The framework uses Cursor rules (`.mdc` files) to detect and activate the different agent roles.
 
----
 
 ## How It Works
 
@@ -62,7 +57,6 @@ Bushi Framework is a set of "mental roles" that can be activated when needed, el
 | `/gh` | 📈 **Growth Hacker** | Marketing, customer acquisition, launch strategy |
 | `/bo` | 💼 **Business Operations** | Financial planning, legal basics, operations |
 
----
 
 ## Agent Overview
 
