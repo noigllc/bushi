@@ -1,34 +1,18 @@
-<div align="center">
-  <h1>🚀 Bushi Framework</h1>
-  <h3>Build Shit Fast</h3>
-</div>
-
-<div align="center">
-
-![Version](https://img.shields.io/badge/version-0.2.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Node](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)
-![Platform](https://img.shields.io/badge/platform-Cursor%20IDE-orange)
-
-</div>
+# 🚀 Bushi Framework
+> Build Shit Fast
+A comprehensive framework for solo developers/entrepreneurs to build micro-SaaS and indie hacking businesses.
 
 ---
 
-A comprehensive framework for solo developers/entrepreneurs to build micro-SaaS and indie hacking businesses.
+## 🎯 **Philosophy**
 
-## 🚀 Quick Installation
+**Build Shit Fast** - No overthinking, no role-switching overhead, just focused expertise when you need it.
 
-**Run this command inside your existing project directory:**
+---
 
-```bash
-npx bushi@latest init
-```
+## 🚀 **Quick Start**
 
-**Note:** Using `@latest` ensures you get the most recent version.
-
-**Important:** This command must be run from within an existing project folder. It will create the necessary framework files in your current project.
-
-## Quick Start
+**Get Bushi Framework running in your project in 3 simple steps:**
 
 1. **Navigate to your project directory:**
    ```bash
@@ -40,15 +24,15 @@ npx bushi@latest init
    npx bushi@latest init
    ```
 
-3. **Open your project in Cursor IDE**
-
-4. **Start using the agents:**
+3. **Open in Cursor IDE and start building:**
    - **New user?** Run `/bushi-start` to preview available agents
    - **Know what you need?** Use commands like `/ps`, `/pd`, `/pb`, etc.
 
+**Note:** Using `@latest` ensures you get the most recent version.
+
 ---
 
-## ✨ What Makes Bushi Special
+## ✨ **What Makes Bushi Special**
 
 - 🚀 **Instant Activation** - Commands like `/ps` activate specialized expertise
 - 🎯 **Deep Focus** - Each agent has deep knowledge in their domain  
@@ -99,13 +83,3 @@ Your marketing and customer acquisition expert. Guides you through launch strate
 
 ### 💼 Business Operations
 Your financial and operational advisor. Assists with business setup, legal requirements, tool selection, and operational efficiency. Ensures your business foundation is solid and compliant.
-
----
-
-## Philosophy
-
-<div align="center">
-
-**Build Shit Fast** - No overthinking, no role-switching overhead, just focused expertise when you need it.
-
-</div>
