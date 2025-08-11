@@ -45,6 +45,8 @@ Bushi Framework is a set of "mental roles" that can be activated when needed, el
 
 **Currently only works with Cursor IDE** - The framework uses Cursor rules (`.mdc` files) to detect and activate the different agent roles.
 
+**Node.js:** Requires Node.js version 16.0.0 or higher. For optimal ES Module compatibility, Node.js 20.0.0+ is recommended.
+
 
 ## How It Works
 

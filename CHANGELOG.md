@@ -13,6 +13,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Performance optimizations
 - User feedback integration
 
+## [0.2.1] - 2024-12-19
+
+### Fixed
+- **ES Module compatibility** - Fixed `ERR_REQUIRE_ESM` error for Node.js v20+ users
+- **Missing command implementation** - Added proper `/bushi-start` command functionality
+
+### Added
+- **Node.js version requirements** - Added minimum version (16.0.0) and recommended version (20.0.0+) to README
+- **Command detection logic** - Enhanced Cursor rules with proper command recognition
+
+### Changed
+- **Improved command handling** - Better error handling and fallback for chalk import failures
+- **Cleaned up duplicate files** - Removed redundant `msf.mdc` rules file
+
+### Technical Details
+- **Dynamic chalk import** - Replaced `require('chalk')` with dynamic `import('chalk')` for ES Module compatibility
+- **Fallback color system** - Added ANSI color fallback when chalk fails to load
+- **Enhanced Cursor rules** - Improved command detection and response patterns
+
 ## [0.2.0] - 2024-08-10
 
 ### Added
