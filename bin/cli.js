@@ -75,22 +75,52 @@ program
       await fs.ensureDir(bushiDir);
       console.log(chalk.blue("📁 Created .bushi directory"));
 
-      // Copy framework files
+      // Check if Bushi already exists
+      const bushiExists = await fs.pathExists(bushiDir);
+      if (bushiExists) {
+        console.log(chalk.yellow("🔄 Updating existing Bushi installation..."));
+      } else {
+        console.log(chalk.green("🚀 Installing Bushi Framework..."));
+      }
+
+      // Copy only user-facing files (not development files)
       const packageDir = path.dirname(require.main.filename);
       const sourceDir = path.join(packageDir, "..", "framework");
 
-      // Copy Cursor rules
+      // Copy Cursor rules (only bushi.mdc, preserve existing rules)
       const rulesSource = path.join(sourceDir, "rules");
       if (await fs.pathExists(rulesSource)) {
-        await fs.copy(rulesSource, cursorRulesDir);
-        console.log(chalk.blue("📋 Copied Cursor rules"));
+        const bushiRulesFile = path.join(rulesSource, "bushi.mdc");
+        const targetRulesFile = path.join(cursorRulesDir, "bushi.mdc");
+        if (await fs.pathExists(bushiRulesFile)) {
+          await fs.copy(bushiRulesFile, targetRulesFile);
+          console.log(chalk.blue("📋 Updated Bushi Cursor rules"));
+        }
       }
 
-      // Copy Bushi framework files
-      const bushiSource = path.join(sourceDir, "bushi");
+      // Copy only user-facing Bushi files (exclude development docs)
+      const bushiSource = path.join(__dirname, "..", ".bushi");
       if (await fs.pathExists(bushiSource)) {
-        await fs.copy(bushiSource, bushiDir);
-        console.log(chalk.blue("📋 Copied Bushi framework files"));
+        // Copy agents
+        const agentsSource = path.join(bushiSource, "agents");
+        const agentsTarget = path.join(bushiDir, "agents");
+        if (await fs.pathExists(agentsSource)) {
+          await fs.copy(agentsSource, agentsTarget);
+          console.log(chalk.blue("📋 Updated Bushi agents"));
+        }
+
+        // Copy user documentation only
+        const userDocsSource = path.join(bushiSource, "docs", "user");
+        const userDocsTarget = path.join(bushiDir, "docs", "user");
+        if (await fs.pathExists(userDocsSource)) {
+          await fs.copy(userDocsSource, userDocsTarget);
+          console.log(chalk.blue("📋 Updated user documentation"));
+        }
+
+        // Note: Templates removed - users can create their own
+
+        // Create docs directory if it doesn't exist
+        await fs.ensureDir(path.join(bushiDir, "docs"));
       }
 
       console.log(
@@ -99,19 +129,21 @@ program
       console.log(chalk.yellow("\n📚 Available commands:"));
       console.log(
         chalk.cyan(
-          "  /ps  → Product Strategist (business strategy, idea generation)"
+          "  /ba  → Business Architect (business strategy, idea generation)"
         )
       );
       console.log(
-        chalk.cyan("  /pd  → Product Designer (UX/UI, user research)")
+        chalk.cyan("  /dx  → Design Experience (UX/UI, user research)")
       );
       console.log(
         chalk.cyan(
-          "  /pb  → Product Builder (technical architecture, development)"
+          "  /ta  → Technical Architect (technical architecture, development)"
         )
       );
       console.log(
-        chalk.cyan("  /gh  → Growth Hacker (marketing, customer acquisition)")
+        chalk.cyan(
+          "  /gs  → Growth Strategist (marketing, customer acquisition)"
+        )
       );
       console.log(
         chalk.cyan(
@@ -119,13 +151,14 @@ program
         )
       );
 
+      console.log(chalk.cyan("  /roadmap → Smart routing for next tasks"));
       console.log(chalk.cyan("  /commands → Quick reference"));
       console.log(chalk.cyan("  /help → Framework overview"));
 
       console.log(chalk.yellow("\n💡 Next steps:"));
       console.log(chalk.white("  1. Open your project in Cursor IDE"));
       console.log(
-        chalk.white("  2. Try /ps to activate the Product Strategist")
+        chalk.white("  2. Try /ba to activate the Business Architect")
       );
       console.log(chalk.white("  3. Start building your micro-SaaS!"));
 

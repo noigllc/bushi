@@ -24,14 +24,14 @@
 
 3. **Open in Cursor IDE and start building:**
    - **New user?** Run `/bushi-start` to preview available agents
-   - **Know what you need?** Use commands like `/ps`, `/pd`, `/pb`, etc.
+   - **Know what you need?** Use commands like `/ba`, `/dx`, `/ta`, etc.
 
 **Note:** Using `@latest` ensures you get the most recent version.
 
 
 ## ✨ **What Makes Bushi Special**
 
-- 🚀 **Instant Activation** - Commands like `/ps` activate specialized expertise
+- 🚀 **Instant Activation** - Commands like `/ba` activate specialized expertise
 - 🎯 **Deep Focus** - Each agent has deep knowledge in their domain  
 - 🧠 **Smart Context** - Agents understand your project and goals
 - ⚡ **No Overhead** - Eliminates role-switching mental friction
@@ -53,10 +53,11 @@ Bushi Framework is a set of "mental roles" that can be activated when needed, el
 | Command | Agent | Purpose |
 |---------|-------|---------|
 | `/bushi-start` | 🚀 **Framework Onboarding** | Interactive agent selection and guidance |
-| `/ps` | 🎯 **Product Strategist** | Business strategy, market analysis, idea generation |
-| `/pd` | 🎨 **Product Designer** | UX/UI, user research, wireframing |
-| `/pb` | 🏗️ **Product Builder** | Technical architecture, development, project management |
-| `/gh` | 📈 **Growth Hacker** | Marketing, customer acquisition, launch strategy |
+| `/roadmap` | 🗺️ **Smart Routing** | Analyzes roadmap and suggests best agent for next task |
+| `/ba` | 🎯 **Business Architect** | Business strategy, market analysis, idea generation |
+| `/dx` | 🎨 **Design Experience** | UX/UI, user research, wireframing |
+| `/ta` | 🏗️ **Technical Architect** | Technical architecture, development, project management |
+| `/gs` | 📈 **Growth Strategist** | Marketing, customer acquisition, launch strategy |
 | `/bo` | 💼 **Business Operations** | Financial planning, legal basics, operations |
 
 
@@ -65,16 +66,19 @@ Bushi Framework is a set of "mental roles" that can be activated when needed, el
 ### 🚀 Framework Onboarding
 Your friendly guide to Bushi Framework. Run `/bushi-start` to get an interactive overview of all available agents and choose the right one for your current needs. Perfect for new users or when you're unsure which agent to use.
 
-### 🎯 Product Strategist
+### 🗺️ Smart Routing
+Your intelligent task router. Run `/roadmap` to analyze your project roadmap and let the framework automatically suggest which agent is best suited for your next epic, story, or task. Perfect for staying focused and efficient.
+
+### 🎯 Business Architect
 Your business strategy expert. Helps you brainstorm new ideas, validate existing concepts, analyze markets, and define business models. Perfect for the early stages of product development.
 
-### 🎨 Product Designer  
+### 🎨 Design Experience  
 Your UX/UI and customer research specialist. Assists with user interviews, wireframing, prototyping, and creating intuitive user experiences. Essential for understanding your users and designing solutions they'll love.
 
-### 🏗️ Product Builder
+### 🏗️ Technical Architect
 Your technical architect and development partner. Helps with tech stack selection, project planning, architecture decisions, and development timelines. Your go-to for turning ideas into working code.
 
-### 📈 Growth Hacker
+### 📈 Growth Strategist
 Your marketing and customer acquisition expert. Guides you through launch strategies, marketing campaigns, growth experiments, and user onboarding. Critical for getting your product in front of the right people.
 
 ### 💼 Business Operations
