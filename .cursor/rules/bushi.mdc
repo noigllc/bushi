@@ -159,3 +159,8 @@ Simply type one of the commands above to activate that role's thinking and guida
 ## Ready to Start?
 
 Type `/bushi-start` to begin your interactive onboarding experience and discover which agent is right for your current needs!
+
+---
+description: Bushi Framework command system for Cursor
+globs: ["**/*"]
+alwaysApply: true
