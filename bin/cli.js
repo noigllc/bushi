@@ -76,30 +76,60 @@ program
       console.log(chalk.blue("📁 Created .bushi directory"));
 
       // Check if Bushi already exists
-      const bushiExists = await fs.pathExists(bushiDir);
+      const bushiExists = await fs.pathExists(path.join(bushiDir, "agents"));
       if (bushiExists) {
         console.log(chalk.yellow("🔄 Updating existing Bushi installation..."));
+
+        // Remove old agents to prevent duplicates
+        const agentsDir = path.join(bushiDir, "agents");
+        if (await fs.pathExists(agentsDir)) {
+          await fs.remove(agentsDir);
+          console.log(chalk.blue("🗑️  Removed old agents"));
+        }
       } else {
         console.log(chalk.green("🚀 Installing Bushi Framework..."));
       }
 
-      // Copy only user-facing files (not development files)
+      // Copy Cursor rules (always copy bushi.mdc)
       const packageDir = path.dirname(require.main.filename);
-      const sourceDir = path.join(packageDir, "..", "framework");
+      let rulesSource = path.join(
+        packageDir,
+        "..",
+        "framework",
+        "rules",
+        "bushi.mdc"
+      );
+      let bushiSource = path.join(packageDir, "..", "framework", "bushi");
 
-      // Copy Cursor rules (only bushi.mdc, preserve existing rules)
-      const rulesSource = path.join(sourceDir, "rules");
-      if (await fs.pathExists(rulesSource)) {
-        const bushiRulesFile = path.join(rulesSource, "bushi.mdc");
-        const targetRulesFile = path.join(cursorRulesDir, "bushi.mdc");
-        if (await fs.pathExists(bushiRulesFile)) {
-          await fs.copy(bushiRulesFile, targetRulesFile);
-          console.log(chalk.blue("📋 Updated Bushi Cursor rules"));
-        }
+      // Fallback for development environment
+      if (!(await fs.pathExists(rulesSource))) {
+        console.log(
+          chalk.blue("🔧 Development mode detected, using local files")
+        );
+        rulesSource = path.join(
+          packageDir,
+          "..",
+          ".cursor",
+          "rules",
+          "bushi.mdc"
+        );
+        bushiSource = path.join(packageDir, "..", ".bushi");
+      } else {
+        console.log(chalk.blue("📦 Production package detected"));
       }
 
-      // Copy only user-facing Bushi files (exclude development docs)
-      const bushiSource = path.join(__dirname, "..", ".bushi");
+      const targetRulesFile = path.join(cursorRulesDir, "bushi.mdc");
+
+      if (await fs.pathExists(rulesSource)) {
+        await fs.copy(rulesSource, targetRulesFile);
+        console.log(chalk.blue("📋 Updated Bushi Cursor rules"));
+      } else {
+        console.log(chalk.red("❌ Error: bushi.mdc not found in package"));
+        console.log(chalk.yellow(`   Looked in: ${rulesSource}`));
+        process.exit(1);
+      }
+
+      // Copy Bushi framework files from the package
       if (await fs.pathExists(bushiSource)) {
         // Copy agents
         const agentsSource = path.join(bushiSource, "agents");
@@ -107,20 +137,76 @@ program
         if (await fs.pathExists(agentsSource)) {
           await fs.copy(agentsSource, agentsTarget);
           console.log(chalk.blue("📋 Updated Bushi agents"));
+
+          // Validate agents were copied
+          const agentFiles = await fs.readdir(agentsTarget);
+          if (agentFiles.length > 0) {
+            console.log(
+              chalk.green(`   ✅ Copied ${agentFiles.length} agent files`)
+            );
+          } else {
+            console.log(chalk.red("   ❌ No agents were copied"));
+            process.exit(1);
+          }
+        } else {
+          console.log(
+            chalk.red("❌ Error: agents directory not found in package")
+          );
+          console.log(chalk.yellow(`   Looked in: ${agentsSource}`));
+          process.exit(1);
         }
 
-        // Copy user documentation only
+        // Copy user documentation only (preserve existing user docs)
         const userDocsSource = path.join(bushiSource, "docs", "user");
         const userDocsTarget = path.join(bushiDir, "docs", "user");
         if (await fs.pathExists(userDocsSource)) {
-          await fs.copy(userDocsSource, userDocsTarget);
-          console.log(chalk.blue("📋 Updated user documentation"));
+          // Only copy if target doesn't exist or is empty
+          if (
+            !(await fs.pathExists(userDocsTarget)) ||
+            (await fs.readdir(userDocsTarget)).length === 0
+          ) {
+            await fs.copy(userDocsSource, userDocsTarget);
+            console.log(chalk.blue("📋 Copied user documentation"));
+          } else {
+            console.log(chalk.blue("📋 Preserved existing user documentation"));
+          }
         }
-
-        // Note: Templates removed - users can create their own
 
         // Create docs directory if it doesn't exist
         await fs.ensureDir(path.join(bushiDir, "docs"));
+
+        // Final validation
+        console.log(chalk.blue("\n🔍 Validating installation..."));
+
+        const requiredFiles = [
+          { path: path.join(cursorRulesDir, "bushi.mdc"), name: "bushi.mdc" },
+          { path: path.join(bushiDir, "agents"), name: "agents directory" },
+        ];
+
+        let allFilesPresent = true;
+        for (const file of requiredFiles) {
+          if (await fs.pathExists(file.path)) {
+            console.log(chalk.green(`   ✅ ${file.name} found`));
+          } else {
+            console.log(chalk.red(`   ❌ ${file.name} missing`));
+            allFilesPresent = false;
+          }
+        }
+
+        if (!allFilesPresent) {
+          console.log(
+            chalk.red(
+              "\n❌ Installation incomplete. Please try again or contact support."
+            )
+          );
+          process.exit(1);
+        }
+
+        console.log(chalk.green("   ✅ All required files present"));
+      } else {
+        console.log(chalk.red("❌ Error: .bushi source not found in package"));
+        console.log(chalk.yellow(`   Looked in: ${bushiSource}`));
+        process.exit(1);
       }
 
       console.log(
@@ -165,8 +251,66 @@ program
       console.log(
         chalk.blue("\n🌐 Learn more: https://github.com/noigllc/bushi")
       );
+
+      console.log(chalk.yellow("\n🛠️  Other commands:"));
+      console.log(chalk.cyan("  bushi cleanup → Remove Bushi Framework"));
+      console.log(chalk.cyan("  bushi info → Show framework information"));
     } catch (error) {
       console.error(chalk.red("\n❌ Error initializing Bushi Framework:"));
+      console.error(chalk.red(error.message));
+      process.exit(1);
+    }
+  });
+
+program
+  .command("cleanup")
+  .description("Remove Bushi Framework from current project")
+  .action(async () => {
+    const banner = await getBanner();
+    console.log(banner);
+    console.log(chalk.yellow("🧹 Cleaning up Bushi Framework...\n"));
+
+    try {
+      const projectRoot = process.cwd();
+      const bushiDir = path.join(projectRoot, ".bushi");
+      const cursorRulesDir = path.join(projectRoot, ".cursor", "rules");
+
+      // Remove .bushi directory
+      if (await fs.pathExists(bushiDir)) {
+        await fs.remove(bushiDir);
+        console.log(chalk.blue("🗑️  Removed .bushi directory"));
+      } else {
+        console.log(chalk.yellow("ℹ️  .bushi directory not found"));
+      }
+
+      // Remove bushi.mdc from .cursor/rules
+      const bushiRulesFile = path.join(cursorRulesDir, "bushi.mdc");
+      if (await fs.pathExists(bushiRulesFile)) {
+        await fs.remove(bushiRulesFile);
+        console.log(chalk.blue("🗑️  Removed bushi.mdc from .cursor/rules"));
+      } else {
+        console.log(chalk.yellow("ℹ️  bushi.mdc not found in .cursor/rules"));
+      }
+
+      // Remove .cursor/rules directory if it's empty
+      if (await fs.pathExists(cursorRulesDir)) {
+        const remainingFiles = await fs.readdir(cursorRulesDir);
+        if (remainingFiles.length === 0) {
+          await fs.remove(cursorRulesDir);
+          console.log(chalk.blue("🗑️  Removed empty .cursor/rules directory"));
+        } else {
+          console.log(
+            chalk.blue(
+              `📁 Preserved .cursor/rules directory (${remainingFiles.length} other files)`
+            )
+          );
+        }
+      }
+
+      console.log(chalk.green("\n✅ Bushi Framework cleanup completed!"));
+      console.log(chalk.yellow("\n💡 To reinstall, run: bushi init"));
+    } catch (error) {
+      console.error(chalk.red("\n❌ Error during cleanup:"));
       console.error(chalk.red(error.message));
       process.exit(1);
     }

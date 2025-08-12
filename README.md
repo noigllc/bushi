@@ -8,25 +8,36 @@
 **Build Shit Fast** - No overthinking, no role-switching overhead, just focused expertise when you need it.
 
 
-## 🚀 **Quick Start**
+## 🚀 Quick Start
 
 **Get Bushi Framework running in your project in 3 simple steps:**
 
-1. **Navigate to your project directory:**
+1. **Install Bushi Framework:**
    ```bash
-   cd your-project-folder
+   npm install -g bushi
    ```
 
 2. **Initialize Bushi Framework:**
    ```bash
-   npx bushi@latest init
+   bushi init
    ```
 
-3. **Open in Cursor IDE and start building:**
-   - **New user?** Run `/bushi-start` to preview available agents
-   - **Know what you need?** Use commands like `/ba`, `/dx`, `/ta`, etc.
+3. **Open in Cursor IDE and start building!**
 
-**Note:** Using `@latest` ensures you get the most recent version.
+### 🛠️ **Available Commands**
+
+- `bushi init` - Initialize Bushi Framework in your project
+- `bushi cleanup` - Remove Bushi Framework completely
+- `bushi info` - Show framework information and version
+
+### 🔄 **Updating Bushi Framework**
+
+To update to the latest version:
+```bash
+npx bushi@latest init
+```
+
+The update process automatically handles existing installations without creating duplicates.
 
 
 ## ✨ **What Makes Bushi Special**

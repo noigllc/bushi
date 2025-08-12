@@ -1,58 +1,49 @@
-# Bushi Framework - Release Notes
+# 🚀 Bushi Framework - Release Notes
 
-## Version 0.3.0 - Major Restructure & Agent Renaming
+## [0.4.2] - 2024-12-19 - Critical Bug Fixes
+
+### 🐛 **Critical Bugs Fixed**
+
+- **Duplicate Agents Folder Creation**: Fixed issue where updating Bushi created duplicate agents folders instead of replacing old ones
+- **Missing bushi.mdc File**: Fixed issue where Cursor rules file wasn't being copied to `.cursor/rules` directory
+- **File Path Resolution**: Fixed CLI file path issues that prevented proper installation in production packages
+- **Installation Validation**: Added comprehensive validation to ensure all required files are present
 
 ### 🚀 **New Features**
-- **Complete agent system restructure** with professional naming
-- **New command system**: `/ba`, `/dx`, `/ta`, `/gs`, `/bo`
-- **Comprehensive documentation** structure and user guides
-- **Project roadmap templates** with scrum methodology
-- **Prevention rules** to stop unwanted behaviors
 
-### 🔄 **Breaking Changes**
-- **Command changes**: `/ps` → `/ba`, `/pd` → `/dx`, `/pb` → `/ta`, `/gh` → `/gs`
-- **Agent names**: Product Strategist → Business Architect, Product Designer → Design Experience, etc.
-- **File structure**: Removed examples and templates folders, reorganized documentation
+- **Enhanced CLI**: Better error handling, progress indicators, and user feedback
+- **Cleanup Command**: New `bushi cleanup` command to completely remove Bushi Framework
+- **Smart Updates**: Installation now properly handles existing installations without duplicates
+- **Development Mode**: CLI automatically detects development vs production environment
 
-### 📁 **New Documentation**
-- **PRD**: Product Requirements Document for Bushi Framework
-- **Development Roadmap**: Epic-based development plan
-- **User Installation Guide**: Clear setup instructions
-- **Migration Guide**: How to update existing installations
-- **Agent Behaviors**: Comprehensive behavior definitions
+### 🔧 **Improvements**
 
-### 🎯 **Agent Improvements**
-- **Business Architect (BA)**: Enhanced strategy and planning capabilities
-- **Design Experience (DX)**: ASCII wireframing and UX design
-- **Technical Architect (TA)**: Development and architecture planning
-- **Growth Strategist (GS)**: Marketing and growth strategies
-- **Business Operations (BO)**: Legal and financial guidance
+- **Better Error Messages**: More specific error messages with file path information
+- **Installation Validation**: Final validation step ensures complete installation
+- **User Documentation Preservation**: Existing user docs are preserved during updates
+- **Enhanced Logging**: Clear progress indicators and status messages
 
-### 🚨 **Prevention Rules Added**
-- **No time assumptions** unless specifically requested
-- **No "Action Plan" terminology** - uses "Project Roadmap" instead
-- **No overcomplication** without user request
-- **Respects user preferences** about naming and structure
+### 📁 **File Structure**
 
-### 🔧 **Technical Improvements**
-- **Cleaner file structure** without unnecessary prefixes
-- **Better context management** between agents
-- **Improved user workflow** documentation
-- **Professional appearance** for end users
+The framework now creates the correct structure:
+```
+project/
+├── .cursor/
+│   └── rules/
+│       └── bushi.mdc          ← Bushi Framework rules
+└── .bushi/
+    ├── agents/                 ← All agent files (no duplicates)
+    └── docs/
+        └── user/               ← User documentation
+```
 
-### 📋 **Migration for Existing Users**
-1. **Update Bushi Framework**: `npx bushi@latest init`
-2. **Update commands**: Use new agent commands (`/ba`, `/dx`, `/ta`, `/gs`, `/bo`)
-3. **Review documentation**: Check new guides and templates
-4. **Test functionality**: Verify all agents work with new structure
+### 🧪 **Testing**
 
-### 🎯 **What's Next**
-- **Context sharing system** implementation
-- **Missing agent development** (DX, TA, GS with full capabilities)
-- **User testing and validation** with real projects
-- **Advanced features** (Figma MCP, agent memory)
+- ✅ New installations work correctly
+- ✅ Updates don't create duplicates
+- ✅ Cursor IDE properly recognizes framework
+- ✅ All required files are validated
 
 ---
-*Release Date: [Current Date]*
-*Version: 0.3.0*
-*Status: Released*
+
+## [0.4.1] - 2024-12-19 - ES Module Compatibility

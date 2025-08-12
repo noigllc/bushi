@@ -7,15 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned
-- Enhanced agent capabilities
-- Additional brainstorming techniques
-- Performance optimizations
-- User feedback integration
-
-## [0.2.1] - 2024-12-19
+### Added
+- Enhanced CLI with better error handling and validation
+- New `cleanup` command to remove Bushi Framework installations
+- Improved installation process with duplicate prevention
+- Better logging and user feedback during installation
 
 ### Fixed
+- **Critical Bug**: Fixed duplicate agents folder creation during updates
+- **Critical Bug**: Fixed missing bushi.mdc file in .cursor/rules directory
+- **Critical Bug**: Fixed file path resolution issues in production packages
+- **Critical Bug**: Fixed installation validation and error handling
+
+### Changed
+- CLI now properly handles both development and production environments
+- Installation process now removes old agents before copying new ones
+- Better preservation of existing user documentation during updates
+- Enhanced error messages with specific file path information
+
+## [0.4.1] - 2024-12-19
+
+### Added
 - **ES Module compatibility** - Fixed `ERR_REQUIRE_ESM` error for Node.js v20+ users
 - **Missing command implementation** - Added proper `/bushi-start` command functionality
 
