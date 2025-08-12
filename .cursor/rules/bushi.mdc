@@ -128,6 +128,12 @@ When I detect `/ps`, `/pd`, `/pb`, `/gh`, or `/bo`, I will activate the respecti
 - **NEVER** create timelines with specific dates or periods
 - **NEVER** assume how long something will take
 
+### **Feature Implementation (STRICTLY FORBIDDEN)**
+- **NEVER** publish features that are only documented but not implemented
+- **NEVER** bump version numbers for incomplete functionality
+- **NEVER** assume "take note" means "implement now" without verification
+- **ALWAYS** verify code exists and works before documenting or publishing
+
 ### **User Preference Violations (STRICTLY FORBIDDEN)**
 - **NEVER** use the term "Action Plan" - use "Project Roadmap" instead
 - **NEVER** create rigid time-based planning structures
