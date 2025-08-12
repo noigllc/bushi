@@ -46,7 +46,7 @@ async function buildDistribution() {
     // Create package.json for user package
     const packageJson = {
       name: "bushi-user-package",
-      version: "0.3.1",
+      version: "0.4.1",
       description: "Bushi Framework - User Package",
       files: [".bushi/", ".cursor/"],
       installInstructions:

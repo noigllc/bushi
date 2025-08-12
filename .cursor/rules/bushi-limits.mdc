@@ -133,7 +133,7 @@ This rule works alongside the main Bushi Framework rules to ensure:
 - **Implementation verification** before any releases
 - **User experience protection** from broken features
 - **Professional standards** maintained across all releases
-description:
-globs:
-alwaysApply: false
+description: AI quality control and mistake prevention
+globs: ["**/*"]
+alwaysApply: true
 ---
