@@ -1,6 +1,6 @@
 {
   "name": "bushi",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Bushi Framework - Build Shit Fast. A comprehensive framework for solo developers to build micro-SaaS businesses.",
   "main": "bin/cli.js",
   "bin": {

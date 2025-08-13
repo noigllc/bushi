@@ -1,5 +1,50 @@
 # 🚀 Bushi Framework - Release Notes
 
+## [0.5.2] - 2024-12-19 - Critical Framework Bug Fix
+
+### 🚨 **Critical Security Fix**
+
+- **Framework Bypass Vulnerability**: Fixed critical bug where agents could skip mandatory documentation validation
+- **Framework Integrity**: Implemented mandatory workflow rules that prevent agents from bypassing proper sequence
+- **Behavioral Enforcement**: All agents now must check project context before technical discussion
+
+### 🚀 **New Framework Rules**
+
+- **Mandatory Documentation Validation**: Agents must review existing project files before technical planning
+- **Automatic Context Detection**: Agents automatically scan README, features, changelog, etc. for project context
+- **Workflow Enforcement**: No technical discussion allowed until project context is established
+
+### 🔧 **Framework Improvements**
+
+- **Simplified Structure**: Removed legacy product-strategist role for cleaner organization
+- **Enhanced Rules**: Updated framework with critical behavioral constraints
+- **Better User Experience**: Agents now understand project context before making recommendations
+- **Framework Security**: Prevents the critical bypass vulnerability that was identified
+
+### 📁 **Updated File Structure**
+
+The framework now creates a cleaner structure:
+```
+project/
+├── .cursor/
+│   └── rules/
+│       ├── bushi.mdc          ← Bushi Framework rules
+│       └── bushi-limits.mdc   ← Critical behavioral constraints
+└── .bushi/
+    ├── agents/                 ← 6 specialized agent files
+    ├── bushi-start.mdc        ← Framework onboarding
+    └── docs/                  ← Ready for user content
+```
+
+### 🧪 **What This Fixes**
+
+- ✅ Agents can no longer skip documentation validation
+- ✅ Framework workflow is properly enforced
+- ✅ Project context is always established before technical planning
+- ✅ Cleaner, more focused agent structure
+
+---
+
 ## [0.5.0] - 2024-12-19 - Automatic Documentation Updates
 
 ### 🚀 **Major New Features**

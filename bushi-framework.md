@@ -105,7 +105,7 @@ Based on Cursor documentation, rules are stored in `.cursor/rules/` directory an
 
 ### Command System Implementation:
 The `/ps` commands would work by:
-1. **Manual Rules** - You reference them with `@product-strategist` 
+1. **Manual Rules** - You reference them with `@bushi-start` 
 2. **Always Rules** - Automatically included in every conversation
 3. **Custom Commands** - Would need to be implemented as Cursor extensions or custom rules
 
@@ -142,7 +142,7 @@ The `/ps` commands would work by:
 ```
 bushi/
 ├── rules/
-│   ├── product-strategist.mdc
+│   ├── bushi-start.mdc
 │   ├── product-designer.mdc
 │   ├── product-builder.mdc
 │   ├── growth-hacker.mdc
@@ -251,6 +251,22 @@ Each command should have:
    - No hidden or assumed functionality
    - Framework serves user needs, not developer preferences
 
+### 🚨 CRITICAL WORKFLOW RULE (MANDATORY DOCUMENTATION VALIDATION)
+
+**Before ANY technical discussion or planning, agents MUST:**
+1. **Automatically check** existing project documentation for project context
+2. **Review files**: README.md, POSSIBLE_FEATURES.md, CHANGELOG.md, and other project docs
+3. **If context clear**: "I've reviewed your project documentation. Let me understand your current needs..."
+4. **If context unclear**: "I need to understand your project better. Let me ask a few questions..."
+5. **NEVER proceed** with technical work until project context is established
+
+**Documentation Review Process:**
+- **Agent scans** existing project files for context
+- **Agent identifies** what's already documented and what's missing
+- **Agent asks targeted questions** to fill any knowledge gaps
+- **Agent establishes** clear understanding before technical planning
+- **User review**: Agent confirms understanding before proceeding
+
 ### Anti-Assumption Framework Rules:
 
 **Before Implementing Any Feature:**
@@ -287,6 +303,10 @@ Each command should have:
 - **Framework rebuilt with enhanced role logic** ✅
 - **Help commands added** (`/commands`, `/help`) ✅
 - **Framework principles and anti-assumption rules added** ✅
+- **Critical workflow rule implemented** ✅
+- **Documentation validation system created** ✅
+- **Framework works with existing documentation** ✅
+- **Legacy product-strategist role removed** ✅
 
 ### 🔄 In Progress:
 - **Role refinement planning** - Ready to deep-dive into each role's capabilities
@@ -306,5 +326,5 @@ Each command should have:
 
 ---
 
-**Last Updated:** [Current Date]
-**Status:** Framework structure defined, ready for detailed development
+**Last Updated:** December 2024
+**Status:** Framework structure defined with mandatory documentation validation, ready for detailed development

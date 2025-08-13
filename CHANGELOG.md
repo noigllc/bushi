@@ -5,25 +5,24 @@ All notable changes to the Bushi Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Added
-- Enhanced CLI with better error handling and validation
-- New `cleanup` command to remove Bushi Framework installations
-- Improved installation process with duplicate prevention
-- Better logging and user feedback during installation
+## [0.5.2] - 2024-12-19 - Critical Framework Bug Fix
 
 ### Fixed
-- **Critical Bug**: Fixed duplicate agents folder creation during updates
-- **Critical Bug**: Fixed missing bushi.mdc file in .cursor/rules directory
-- **Critical Bug**: Fixed file path resolution issues in production packages
-- **Critical Bug**: Fixed installation validation and error handling
+- **Critical Bug**: Fixed framework bypass vulnerability where agents could skip documentation validation
+- **Critical Bug**: Removed legacy product-strategist role that was no longer needed
+- **Framework Security**: Implemented mandatory documentation validation before technical discussion
+
+### Added
+- **Mandatory Workflow Rule**: Agents must now check existing project documentation before technical planning
+- **Automatic Context Detection**: Agents automatically scan existing files for project context
+- **Framework Integrity**: Prevents agents from bypassing proper workflow sequence
 
 ### Changed
-- CLI now properly handles both development and production environments
-- Installation process now removes old agents before copying new ones
-- Better preservation of existing user documentation during updates
-- Enhanced error messages with specific file path information
+- **Simplified Structure**: Cleaner .bushi folder structure without legacy components
+- **Enhanced Rules**: Updated framework rules with critical behavioral constraints
+- **Better User Experience**: Agents now understand project context before making recommendations
+
+## [Unreleased]
 
 ## [0.5.0] - 2024-12-19 - Automatic Documentation Updates
 
