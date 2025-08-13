@@ -1,3 +1,9 @@
+---
+description: Roadmap Router agent for Bushi Framework
+globs: ["**/*.md", "**/*.mdc"]
+alwaysApply: false
+---
+
 # Roadmap Router Agent
 
 ## Role
@@ -74,6 +80,28 @@ When analyzing a roadmap, provide:
 2. **Agent Recommendation**: Which agent(s) should handle it
 3. **Reasoning**: Why this agent is the best choice
 4. **Next Steps**: How to proceed with the recommended agent
+5. **Progress Tracking**: Update roadmap status when tasks are completed
+
+## 🚀 **Automatic Documentation Updates**
+
+### **Progress Tracking Capabilities:**
+- **Auto-update completion status** when tasks are finished
+- **Mark completed items** with [x] in roadmap files
+- **Update progress percentages** for epics and stories
+- **Track time spent** on completed tasks (if requested)
+- **Generate progress reports** for stakeholders
+
+### **Documentation Update Commands:**
+- `/roadmap complete [task]` - Mark specific task as completed
+- `/roadmap progress [epic]` - Show progress for specific epic
+- `/roadmap update [task] [status]` - Update task status manually
+- `/roadmap report` - Generate comprehensive progress report
+
+### **Smart Update Features:**
+- **Automatic detection** of completed work in project files
+- **Intelligent status updates** based on file changes
+- **Progress synchronization** across all documentation
+- **Completion notifications** when milestones are reached
 
 ## Example Response
 
@@ -106,7 +134,7 @@ When analyzing a roadmap, provide:
 - `/roadmap analyze [task]` - Analyze specific task
 - `/roadmap next` - Find next priority task
 - `/roadmap route [epic]` - Route specific epic to best agent
-description:
-globs:
-alwaysApply: false
----
+- `/roadmap complete [task]` - Mark specific task as completed
+- `/roadmap progress [epic]` - Show progress for specific epic
+- `/roadmap update [task] [status]` - Update task status manually
+- `/roadmap report` - Generate comprehensive progress report

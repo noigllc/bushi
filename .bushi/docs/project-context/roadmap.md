@@ -1,5 +1,27 @@
 # Bushi Framework - Development Roadmap
 
+## 🚨 **CRITICAL PRIORITY: Fix Agent Behavioral Issues (Immediate)**
+**Goal**: Fix fundamental workflow violations and improve user experience
+
+**Critical Issues Identified**:
+- [x] BA not asking about existing roadmap/PRD files before proceeding
+- [x] BA adding timeframes without user input
+- [x] BA creating MVP plans from vague ideas without proper context gathering
+- [x] TA implementing without discussing tech stack or requesting user input
+- [x] TA not expecting or requesting project documentation (PRD/roadmap)
+- [x] TA not providing explanations of actions or requesting user feedback
+- [x] TA working in isolation instead of suggesting other agents
+- [x] Bushi-Limits file not being distributed to users (alwaysApply: true)
+
+**Technical Fixes Required**:
+- [x] Implement mandatory context reading before agent actions
+- [x] Add user input validation and feedback loops
+- [x] Create agent collaboration protocols and handoff suggestions
+- [x] Build proper workflow validation and documentation requirements
+- [x] Distribute Bushi-Limits file to all users with alwaysApply enabled
+- [x] Add behavioral constraints to prevent premature implementation
+- [x] **REFINED**: Intelligent handling of "no existing documentation" cases
+
 ## 🚀 **Epic 1: Core Agent System (Current Phase)**
 **Goal**: Basic agent functionality and user workflows
 
@@ -8,15 +30,20 @@
 - [x] Basic agent behaviors and responses
 - [x] User workflow documentation
 - [x] Project roadmap templates
-- [ ] Agent context reading system
+- [x] **CRITICAL**: Fix agent behavioral issues (see above)
+- [x] **CRITICAL**: Implement mandatory context reading before actions
+- [x] **CRITICAL**: Add user input validation and feedback requirements
+- [x] **CRITICAL**: Create agent collaboration and handoff protocols
 - [ ] Basic project documentation structure
 
-## 🔧 **Priority Task: Stabilize & Publish (Immediate)**
+## 🔧 **Priority Task: Stabilize & Publish (After Behavioral Fixes)**
 **Goal**: Stabilize all changes and publish new version
 
 **Stories**:
-- [ ] Test all agent commands work properly
+- [x] **CRITICAL**: Fix all agent behavioral issues first
+- [ ] Test all agent commands work properly with new constraints
 - [ ] Validate documentation is consistent
+- [x] **CRITICAL**: Ensure Bushi-Limits file is distributed to users
 - [ ] Update package.json version
 - [ ] Publish new npm package
 - [ ] Push code to GitHub
@@ -26,28 +53,37 @@
 - [x] Rename and restructure agents
 - [x] Create user workflow documentation
 - [x] Update all command references
-- [ ] Implement context reading in agents
+- [x] **CRITICAL**: Implement behavioral constraints and validation
+- [ ] **CRITICAL**: Test agent workflows with proper context reading
+- [ ] **CRITICAL**: Verify user input requirements are enforced
 - [ ] Test agent handoffs with real projects
 
 ## 🔄 **Epic 2: Context Management & Collaboration**
 **Goal**: Agents can read, share, and build upon project context
 
 **Stories**:
-- [ ] Agents read project documentation automatically
+- [x] **CRITICAL**: Agents MUST read project documentation before proceeding
+- [x] **CRITICAL**: Agents MUST request missing documentation when needed
 - [ ] Context sharing between agents works seamlessly
 - [ ] Project state is preserved across sessions
 - [ ] Users can see project progress and status
 
 **Tasks**:
-- [ ] Build context reading system
+- [x] **CRITICAL**: Build mandatory context reading system
+- [x] **CRITICAL**: Create documentation requirement validation
 - [ ] Create project state management
-- [ ] Implement agent collaboration protocols
+- [x] **CRITICAL**: Implement agent collaboration protocols
 - [ ] Test context continuity across agents
 
 ## 🎯 **Epic 3: Enhanced Agent Capabilities**
 **Goal**: Each agent provides professional-level guidance and outputs
 
 **Stories**:
+- [x] **CRITICAL**: BA asks for context before creating business plans
+- [x] **CRITICAL**: BA validates user input before proceeding
+- [x] **CRITICAL**: TA discusses tech stack and gets user approval
+- [x] **CRITICAL**: TA explains actions and requests feedback
+- [x] **CRITICAL**: All agents suggest other agents when appropriate
 - [ ] BA creates comprehensive business plans and roadmaps
 - [ ] DX creates detailed wireframes and user flows
 - [ ] TA provides technical architecture and development plans
@@ -55,6 +91,9 @@
 - [ ] BO handles business setup and legal requirements
 
 **Tasks**:
+- [x] **CRITICAL**: Implement input validation and context requirements
+- [x] **CRITICAL**: Add user feedback and approval workflows
+- [x] **CRITICAL**: Create agent collaboration suggestions
 - [ ] Enhance BA with business model templates
 - [ ] Build DX with ASCII wireframing system
 - [ ] Develop TA with technical planning capabilities

@@ -25,6 +25,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Better preservation of existing user documentation during updates
 - Enhanced error messages with specific file path information
 
+## [0.5.0] - 2024-12-19 - Automatic Documentation Updates
+
+### Added
+- **MANDATORY Documentation Updates** - All agents now automatically update project documentation when making progress
+- **Automatic Progress Tracking** - Roadmap tasks are automatically marked as completed [x] when finished
+- **Enhanced Roadmap Router** - New commands for progress tracking and completion management
+- **Smart Update Features** - Automatic detection of completed work and intelligent status updates
+- **Progress Synchronization** - All documentation stays synchronized across agent work
+
+### New Commands
+- `/roadmap complete [task]` - Mark specific task as completed
+- `/roadmap progress [epic]` - Show progress for specific epic
+- `/roadmap update [task] [status]` - Update task status manually
+- `/roadmap report` - Generate comprehensive progress report
+
+### Enhanced Agent Behaviors
+- **All agents now enforce** mandatory documentation updates after completing work
+- **Progress tracking automation** across all agent interactions
+- **Decision documentation** - All agent decisions are automatically documented with rationale
+- **User notification** - Agents inform users of all documentation updates made
+
+### Framework Improvements
+- **Behavioral rule enforcement** - New mandatory documentation update rules across all agents
+- **Quality control enhancement** - Documentation updates are now part of the quality control process
+- **User experience improvement** - No more forgotten documentation updates or outdated roadmaps
+
+### Technical Details
+- **6 new mandatory behavioral rules** added across all agent files
+- **Framework-level enforcement** of documentation update requirements
+- **Enhanced Cursor rules** with new behavioral constraints
+- **User limits file** updated with comprehensive documentation requirements
+
 ## [0.4.1] - 2024-12-19
 
 ### Added

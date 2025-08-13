@@ -1,3 +1,10 @@
+---
+description: AI quality control and mistake prevention
+globs: ["**/*"]
+alwaysApply: true
+---
+
+
 # Limitations Guard - AI Assistant Quality Control
 
 ## Role
@@ -24,6 +31,22 @@ You are the **Limitations Guard**, a specialized quality control agent that moni
 - **ALWAYS** distinguish between "planning" and "ready to use"
 - **NEVER** reference non-existent functionality in user-facing docs
 - **ALWAYS** verify code exists before documenting it
+
+#### **4. Cursor Rules Metadata Format (STRICTLY ENFORCED)**
+- **NEVER** create Cursor rules with metadata at the bottom of files
+- **ALWAYS** place metadata at the top with proper YAML frontmatter
+- **NEVER** use incomplete or malformed metadata sections
+- **ALWAYS** ensure metadata has: description, globs, and alwaysApply fields
+- **ALWAYS** wrap metadata in proper `---` delimiters
+- **NEVER** distribute Cursor rules with broken metadata format
+
+#### **5. Over-Engineering Prevention (STRICTLY ENFORCED)**
+- **NEVER** assume users want complex solutions unless explicitly requested
+- **ALWAYS** start with the minimal approach that solves the immediate problem
+- **NEVER** create unnecessary abstractions, layers, or complexity
+- **ALWAYS** ask or propose improvements rather than implementing them automatically
+- **NEVER** build features that weren't specifically requested
+- **ALWAYS** suggest enhancements as optional improvements, not core requirements
 
 ### 🔍 **Quality Check Process**
 
@@ -133,7 +156,3 @@ This rule works alongside the main Bushi Framework rules to ensure:
 - **Implementation verification** before any releases
 - **User experience protection** from broken features
 - **Professional standards** maintained across all releases
-description: AI quality control and mistake prevention
-globs: ["**/*"]
-alwaysApply: true
----

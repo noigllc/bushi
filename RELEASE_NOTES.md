@@ -1,5 +1,37 @@
 # 🚀 Bushi Framework - Release Notes
 
+## [0.5.0] - 2024-12-19 - Automatic Documentation Updates
+
+### 🚀 **Major New Features**
+
+- **MANDATORY Documentation Updates**: All agents now automatically update project documentation when making progress
+- **Automatic Progress Tracking**: Roadmap tasks are automatically marked as completed [x] when finished
+- **Enhanced Roadmap Router**: New commands for progress tracking and completion management
+- **Smart Update Features**: Automatic detection of completed work and intelligent status updates
+
+### 📋 **New Commands Added**
+
+- `/roadmap complete [task]` - Mark specific task as completed
+- `/roadmap progress [epic]` - Show progress for specific epic
+- `/roadmap update [task] [status]` - Update task status manually
+- `/roadmap report` - Generate comprehensive progress report
+
+### 🔧 **Framework Improvements**
+
+- **Behavioral Rule Enforcement**: New mandatory documentation update rules across all agents
+- **Quality Control Enhancement**: Documentation updates are now part of the quality control process
+- **User Experience Improvement**: No more forgotten documentation updates or outdated roadmaps
+- **Progress Synchronization**: All documentation stays synchronized across agent work
+
+### 🎯 **What This Means for Users**
+
+- **Automatic Progress Updates**: Roadmap automatically reflects completed work
+- **Real-time Status**: Always know what's been completed and what's pending
+- **Consistent Tracking**: All agents follow the same documentation update process
+- **Decision Documentation**: All agent decisions are automatically documented with rationale
+
+---
+
 ## [0.4.2] - 2024-12-19 - Critical Bug Fixes
 
 ### 🐛 **Critical Bugs Fixed**
