@@ -90,7 +90,7 @@ program
         console.log(chalk.green("🚀 Installing Bushi Framework..."));
       }
 
-      // Copy Cursor rules (always copy bushi.mdc)
+      // Copy Cursor rules (always copy bushi.mdc and bushi-limits.mdc)
       const packageDir = path.dirname(require.main.filename);
       let rulesSource = path.join(
         packageDir,
@@ -98,6 +98,13 @@ program
         "framework",
         "rules",
         "bushi.mdc"
+      );
+      let limitsSource = path.join(
+        packageDir,
+        "..",
+        "framework",
+        "rules",
+        "bushi-limits.mdc"
       );
       let bushiSource = path.join(packageDir, "..", "framework", "bushi");
 
@@ -113,19 +120,39 @@ program
           "rules",
           "bushi.mdc"
         );
+        limitsSource = path.join(
+          packageDir,
+          "..",
+          ".cursor",
+          "rules",
+          "bushi-limits.mdc"
+        );
         bushiSource = path.join(packageDir, "..", ".bushi");
       } else {
         console.log(chalk.blue("📦 Production package detected"));
       }
 
+      // Copy bushi.mdc
       const targetRulesFile = path.join(cursorRulesDir, "bushi.mdc");
-
       if (await fs.pathExists(rulesSource)) {
         await fs.copy(rulesSource, targetRulesFile);
         console.log(chalk.blue("📋 Updated Bushi Cursor rules"));
       } else {
         console.log(chalk.red("❌ Error: bushi.mdc not found in package"));
         console.log(chalk.yellow(`   Looked in: ${rulesSource}`));
+        process.exit(1);
+      }
+
+      // Copy bushi-limits.mdc (CRITICAL behavioral constraints)
+      const targetLimitsFile = path.join(cursorRulesDir, "bushi-limits.mdc");
+      if (await fs.pathExists(limitsSource)) {
+        await fs.copy(limitsSource, targetLimitsFile);
+        console.log(chalk.blue("📋 Updated Bushi behavioral constraints"));
+      } else {
+        console.log(
+          chalk.red("❌ Error: bushi-limits.mdc not found in package")
+        );
+        console.log(chalk.yellow(`   Looked in: ${limitsSource}`));
         process.exit(1);
       }
 
@@ -180,6 +207,10 @@ program
 
         const requiredFiles = [
           { path: path.join(cursorRulesDir, "bushi.mdc"), name: "bushi.mdc" },
+          {
+            path: path.join(cursorRulesDir, "bushi-limits.mdc"),
+            name: "bushi-limits.mdc",
+          },
           { path: path.join(bushiDir, "agents"), name: "agents directory" },
         ];
 
@@ -290,6 +321,19 @@ program
         console.log(chalk.blue("🗑️  Removed bushi.mdc from .cursor/rules"));
       } else {
         console.log(chalk.yellow("ℹ️  bushi.mdc not found in .cursor/rules"));
+      }
+
+      // Remove bushi-limits.mdc from .cursor/rules
+      const bushiLimitsFile = path.join(cursorRulesDir, "bushi-limits.mdc");
+      if (await fs.pathExists(bushiLimitsFile)) {
+        await fs.remove(bushiLimitsFile);
+        console.log(
+          chalk.blue("🗑️  Removed bushi-limits.mdc from .cursor/rules")
+        );
+      } else {
+        console.log(
+          chalk.yellow("ℹ️  bushi-limits.mdc not found in .cursor/rules")
+        );
       }
 
       // Remove .cursor/rules directory if it's empty

@@ -42,6 +42,10 @@ async function buildDistribution() {
       path.join(__dirname, "..", ".cursor", "rules", "bushi.mdc"),
       path.join(userCursorDir, "bushi.mdc")
     );
+    await fs.copy(
+      path.join(__dirname, "..", ".cursor", "rules", "bushi-limits.mdc"),
+      path.join(userCursorDir, "bushi-limits.mdc")
+    );
 
     // Create package.json for user package
     const packageJson = {

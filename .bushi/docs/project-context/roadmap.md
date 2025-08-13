@@ -12,6 +12,7 @@
 - [x] TA not providing explanations of actions or requesting user feedback
 - [x] TA working in isolation instead of suggesting other agents
 - [x] Bushi-Limits file not being distributed to users (alwaysApply: true)
+- [x] CLI not copying bushi-limits.mdc to user projects during init
 
 **Technical Fixes Required**:
 - [x] Implement mandatory context reading before agent actions
@@ -21,6 +22,7 @@
 - [x] Distribute Bushi-Limits file to all users with alwaysApply enabled
 - [x] Add behavioral constraints to prevent premature implementation
 - [x] **REFINED**: Intelligent handling of "no existing documentation" cases
+- [x] Fix CLI to copy bushi-limits.mdc during init command
 
 ## 🚀 **Epic 1: Core Agent System (Current Phase)**
 **Goal**: Basic agent functionality and user workflows
@@ -41,6 +43,7 @@
 
 **Stories**:
 - [x] **CRITICAL**: Fix all agent behavioral issues first
+- [x] **CRITICAL**: Fix CLI distribution of bushi-limits.mdc
 - [ ] Test all agent commands work properly with new constraints
 - [ ] Validate documentation is consistent
 - [x] **CRITICAL**: Ensure Bushi-Limits file is distributed to users
