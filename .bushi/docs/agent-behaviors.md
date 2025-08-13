@@ -29,6 +29,7 @@
 4. **Provide suggestions** - Spark user thinking
 5. **Document outputs** - Create/update project docs
 6. **Suggest next steps** - When to move to another agent
+7. **Update progress** - Mark completed tasks and update roadmaps automatically
 
 ### **Agent Handoff Scenarios:**
 - **User-initiated**: User wants to switch agents
@@ -99,6 +100,28 @@ BA → GS → DX
 - **Technical specifications**
 - **Marketing and growth plans**
 - **Operational requirements**
+
+## 🆕 **v0.5.0: Automatic Documentation Updates**
+
+### **Mandatory Progress Tracking**
+All agents now automatically update project documentation when making progress:
+
+- **Task Completion**: Automatically mark completed roadmap tasks with [x]
+- **Progress Updates**: Update completion status across all documentation files
+- **Decision Documentation**: Record all decisions and their rationale automatically
+- **User Notification**: Inform users of all documentation updates made
+
+### **Smart Update Features**
+- **Automatic Detection**: Agents detect when work is completed
+- **Intelligent Status Updates**: Update progress based on actual work done
+- **Progress Synchronization**: Keep all documentation in sync across agents
+- **Completion Notifications**: Alert users when milestones are reached
+
+### **Quality Control Integration**
+Documentation updates are now part of the quality control process:
+- **Pre-completion Check**: Verify documentation is updated before marking tasks complete
+- **Post-completion Validation**: Ensure all relevant files reflect current status
+- **User Experience Protection**: Prevent outdated documentation from confusing users
 
 ### **How Context is Maintained:**
 - **Centralized documentation** in `.bushi/docs/`

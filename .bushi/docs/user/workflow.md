@@ -52,6 +52,32 @@ Each agent will:
 - Build upon existing work
 - Give you clear next steps
 - Suggest when to move to the next agent
+- **Automatically update your project documentation** and mark completed tasks
+
+## 🆕 **v0.5.0: Automatic Progress Tracking**
+
+### **What Happens Automatically**
+Bushi Framework now automatically keeps your project documentation synchronized:
+
+- **Task Completion**: When you complete a task, agents automatically mark it with [x] in your roadmap
+- **Progress Updates**: All documentation files stay current without manual updates
+- **Decision Tracking**: Every decision and its rationale is automatically documented
+- **Status Synchronization**: Progress is tracked consistently across all agent interactions
+
+### **New Roadmap Commands**
+Take control of your project progress with these new commands:
+
+- `/roadmap complete [task]` - Mark a specific task as completed
+- `/roadmap progress [epic]` - See progress for a specific epic
+- `/roadmap update [task] [status]` - Manually update task status
+- `/roadmap report` - Get a comprehensive progress report
+
+### **Focus on Building, Not Updating**
+With automatic documentation updates, you can:
+- **Stay focused** on actual development work
+- **Always know** what's been completed and what's pending
+- **Track progress** without manual documentation maintenance
+- **Maintain visibility** into project status at all times
 
 ## 🔄 **Complete Workflow Example**
 

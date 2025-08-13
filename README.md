@@ -46,6 +46,8 @@ The update process automatically handles existing installations without creating
 - 🎯 **Deep Focus** - Each agent has deep knowledge in their domain  
 - 🧠 **Smart Context** - Agents understand your project and goals
 - ⚡ **No Overhead** - Eliminates role-switching mental friction
+- 📋 **Automatic Progress Tracking** - Documentation stays synchronized automatically
+- 🔄 **Smart Updates** - Agents automatically update roadmaps and track completion
 
 
 ## What It Is
@@ -94,3 +96,27 @@ Your marketing and customer acquisition expert. Guides you through launch strate
 
 ### 💼 Business Operations
 Your financial and operational advisor. Assists with business setup, legal requirements, tool selection, and operational efficiency. Ensures your business foundation is solid and compliant.
+
+## 🆕 **New in v0.5.0: Automatic Documentation Updates**
+
+### 📋 **Smart Progress Tracking**
+Bushi Framework now automatically keeps your project documentation synchronized across all agent interactions:
+
+- **Automatic Updates**: Agents automatically update roadmaps when completing tasks
+- **Progress Marking**: Completed tasks are automatically marked with [x] in your roadmap
+- **Real-time Status**: Always know what's been completed and what's pending
+- **Decision Documentation**: All agent decisions are automatically documented with rationale
+
+### 🚀 **Enhanced Roadmap Commands**
+New commands for better project management:
+
+- `/roadmap complete [task]` - Mark specific task as completed
+- `/roadmap progress [epic]` - Show progress for specific epic
+- `/roadmap update [task] [status]` - Update task status manually
+- `/roadmap report` - Generate comprehensive progress report
+
+### 🎯 **What This Means for You**
+- **No More Forgotten Updates**: Documentation stays current automatically
+- **Better Project Visibility**: Clear view of completion status at all times
+- **Consistent Tracking**: All agents follow the same documentation update process
+- **Focused Work**: Spend time building, not updating documentation

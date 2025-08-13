@@ -8,6 +8,7 @@ When you install Bushi Framework, you receive:
 - Agent command system (`/ba`, `/dx`, `/ta`, `/gs`, `/bo`)
 - Agent behavior definitions
 - Command detection and activation
+- **Automatic documentation updates** and progress tracking
 
 ### **2. Agent Configurations** (`.bushi/agents/`)
 - Business Architect (BA) - Business strategy and planning
@@ -98,6 +99,26 @@ npm run build
 2. **Professional Appearance** - No development clutter
 3. **Easy Maintenance** - Development files separate from user files
 4. **Scalable Distribution** - Can package user files separately
+
+## 🆕 **v0.5.0: Enhanced User Experience**
+
+### **Automatic Documentation Management**
+- **Progress Tracking**: Agents automatically update roadmaps when completing tasks
+- **Smart Updates**: Documentation stays synchronized across all agent interactions
+- **Completion Marking**: Finished tasks are automatically marked with [x]
+- **Decision Documentation**: All agent decisions are recorded with rationale
+
+### **New User Commands**
+- `/roadmap complete [task]` - Mark tasks as completed
+- `/roadmap progress [epic]` - View epic progress
+- `/roadmap update [task] [status]` - Manual status updates
+- `/roadmap report` - Generate progress reports
+
+### **Improved Workflow**
+- **Focus on Building**: Spend time developing, not updating docs
+- **Real-time Status**: Always know project completion status
+- **Consistent Tracking**: All agents follow the same update process
+- **Better Visibility**: Clear view of what's done and what's pending
 
 ---
 *Document created: [Current Date]*

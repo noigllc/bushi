@@ -19,6 +19,14 @@ This activates the Roadmap Router agent to analyze your current project.
 /roadmap route [epic name]
 ```
 
+### **🆕 v0.5.0: Progress Tracking Commands:**
+```
+/roadmap complete [task]     # Mark specific task as completed
+/roadmap progress [epic]     # Show progress for specific epic
+/roadmap update [task] [status]  # Update task status manually
+/roadmap report              # Generate comprehensive progress report
+```
+
 ## 📁 **What Files Does It Analyze?**
 
 The Roadmap Router looks for these files in your project:
@@ -70,6 +78,29 @@ The Roadmap Router looks for these files in your project:
 **Dependencies**: Database schema, API design
 **Estimated Effort**: 3-5 days
 ```
+
+## 🆕 **v0.5.0: Automatic Progress Tracking**
+
+### **What Happens Automatically**
+Bushi Framework now automatically keeps your roadmap synchronized:
+
+- **Task Completion**: When you complete a task, agents automatically mark it with [x]
+- **Progress Updates**: All roadmap files stay current without manual updates
+- **Status Synchronization**: Progress is tracked consistently across all agent interactions
+- **Decision Documentation**: Every decision and its rationale is automatically recorded
+
+### **Smart Update Features**
+- **Automatic Detection**: Agents detect when work is completed
+- **Intelligent Status Updates**: Update progress based on actual work done
+- **Progress Synchronization**: Keep all documentation in sync across agents
+- **Completion Notifications**: Alert you when milestones are reached
+
+### **Focus on Building, Not Updating**
+With automatic progress tracking, you can:
+- **Stay focused** on actual development work
+- **Always know** what's been completed and what's pending
+- **Track progress** without manual roadmap maintenance
+- **Maintain visibility** into project status at all times
 
 ## 🎯 **Agent Routing Examples**
 
