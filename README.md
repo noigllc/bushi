@@ -12,21 +12,15 @@
 
 **Get Bushi Framework running in your project in 3 simple steps:**
 
-1. **Install Bushi Framework:**
+1. **Install & Initialize Bushi Framework:**
    ```bash
    npx bushi@latest init
    ```
 
-2. **Initialize Bushi Framework:**
-   ```bash
-   npx bushi@latest init
-   ```
-
-3. **Open in Cursor IDE and start building!**
+2. **Open in Cursor IDE and start building!**
 
 ### 🛠️ **Available Commands**
 
-- `npx bushi@latest init` - Initialize Bushi Framework in your project
 - `bushi cleanup` - Remove Bushi Framework completely
 - `bushi info` - Show framework information and version
 
