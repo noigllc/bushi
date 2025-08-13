@@ -14,19 +14,19 @@
 
 1. **Install Bushi Framework:**
    ```bash
-   npm install -g bushi
+   npx bushi@latest init
    ```
 
 2. **Initialize Bushi Framework:**
    ```bash
-   bushi init
+   npx bushi@latest init
    ```
 
 3. **Open in Cursor IDE and start building!**
 
 ### 🛠️ **Available Commands**
 
-- `bushi init` - Initialize Bushi Framework in your project
+- `npx bushi@latest init` - Initialize Bushi Framework in your project
 - `bushi cleanup` - Remove Bushi Framework completely
 - `bushi info` - Show framework information and version
 
@@ -66,21 +66,18 @@ Bushi Framework is a set of "mental roles" that can be activated when needed, el
 | Command | Agent | Purpose |
 |---------|-------|---------|
 | `/bushi-start` | 🚀 **Framework Onboarding** | Interactive agent selection and guidance |
-| `/roadmap` | 🗺️ **Smart Routing** | Analyzes roadmap and suggests best agent for next task |
 | `/ba` | 🎯 **Business Architect** | Business strategy, market analysis, idea generation |
 | `/dx` | 🎨 **Design Experience** | UX/UI, user research, wireframing |
 | `/ta` | 🏗️ **Technical Architect** | Technical architecture, development, project management |
 | `/gs` | 📈 **Growth Strategist** | Marketing, customer acquisition, launch strategy |
 | `/bo` | 💼 **Business Operations** | Financial planning, legal basics, operations |
+| `/roadmap` | 🗺️ **Smart Routing** | Analyzes roadmap and suggests best agent for next task |
 
 
 ## Agent Overview
 
 ### 🚀 Framework Onboarding
 Your friendly guide to Bushi Framework. Run `/bushi-start` to get an interactive overview of all available agents and choose the right one for your current needs. Perfect for new users or when you're unsure which agent to use.
-
-### 🗺️ Smart Routing
-Your intelligent task router. Run `/roadmap` to analyze your project roadmap and let the framework automatically suggest which agent is best suited for your next epic, story, or task. Perfect for staying focused and efficient.
 
 ### 🎯 Business Architect
 Your business strategy expert. Helps you brainstorm new ideas, validate existing concepts, analyze markets, and define business models. Perfect for the early stages of product development.
@@ -96,6 +93,9 @@ Your marketing and customer acquisition expert. Guides you through launch strate
 
 ### 💼 Business Operations
 Your financial and operational advisor. Assists with business setup, legal requirements, tool selection, and operational efficiency. Ensures your business foundation is solid and compliant.
+
+### 🗺️ Smart Routing
+Your intelligent task router. Run `/roadmap` to analyze your project roadmap and let the framework automatically suggest which agent is best suited for your next epic, story, or task. Perfect for staying focused and efficient.
 
 ## 🆕 **New in v0.5.0: Automatic Documentation Updates**
 
