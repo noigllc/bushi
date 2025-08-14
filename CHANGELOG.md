@@ -5,6 +5,25 @@ All notable changes to the Bushi Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.3] - 2024-12-19 - Critical Framework Rule Enforcement
+
+### Fixed
+- **Critical Workflow Bypass**: Bushi Start no longer allows jumping straight to TA without business foundation
+- **Agent Routing Issues**: Fixed incorrect agent names in onboarding (from `/pd`, `/pb`, `/gh` to `/dx`, `/ta`, `/gs`)
+- **Context Reading Bypass**: Agents can no longer proceed without checking project documentation
+- **Workflow Sequence Violations**: System now enforces proper agent sequence (BA → DX → TA → GS → BO)
+
+### Added
+- **Mandatory Workflow Validation**: Bushi Start now enforces proper agent selection sequence
+- **Context Reading Requirements**: All agents must check existing documentation before proceeding
+- **Business-First Approach**: New ideas must start with Business Architect, not Technical Architect
+- **Documentation Foundation Requirements**: Proper project foundation required before technical work
+
+### Changed
+- **Enhanced Bushi Start Agent**: Added mandatory behavioral rules and workflow enforcement
+- **Improved User Experience**: Users can no longer bypass proper business validation
+- **Framework Stability**: Prevents critical workflow violations that could lead to poor project outcomes
+
 ## [0.5.2] - 2024-12-19 - Critical Framework Bug Fix
 
 ### Fixed
