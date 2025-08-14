@@ -91,6 +91,22 @@ Your financial and operational advisor. Assists with business setup, legal requi
 ### 🗺️ Smart Routing
 Your intelligent task router. Run `/roadmap` to analyze your project roadmap and let the framework automatically suggest which agent is best suited for your next epic, story, or task. Perfect for staying focused and efficient.
 
+## 🆕 **New in v0.5.3: Critical Framework Stability Fixes**
+
+### 🚨 **Framework Rule Enforcement**
+Bushi Framework now enforces proper workflow and prevents critical bypasses:
+
+- **Workflow Validation**: Bushi Start now enforces proper agent sequence (BA → DX → TA → GS → BO)
+- **Context Reading**: Agents must check project documentation before proceeding
+- **Business First**: New ideas must start with Business Architect, not Technical Architect
+- **Documentation Requirements**: Proper project foundation required before technical work
+
+### 🔧 **What Was Fixed**
+- **Agent Routing**: Bushi Start no longer bypasses proper workflow sequence
+- **Context Bypass**: Agents can no longer proceed without reading project documentation
+- **Workflow Violations**: System now enforces business validation before technical work
+- **Agent Names**: Corrected agent command references in onboarding
+
 ## 🆕 **New in v0.5.0: Automatic Documentation Updates**
 
 ### 📋 **Smart Progress Tracking**
