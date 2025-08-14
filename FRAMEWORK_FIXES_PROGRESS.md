@@ -23,6 +23,8 @@
 - [x] **Added mandatory workflow validation** to prevent bypassing BA for new ideas
 - [x] **Added mandatory documentation checks** before agent selection
 - [x] **Implemented proper workflow sequence** enforcement in bushi-start
+- [x] **Fixed idea description bypass** - Bushi Start now automatically routes to Business Architect
+- [x] **Implemented automatic PRD/roadmap creation** for new ideas
 
 ## 🚨 **REMAINING CRITICAL ISSUES TO FIX**
 

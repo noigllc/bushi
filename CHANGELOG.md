@@ -12,12 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Agent Routing Issues**: Fixed incorrect agent names in onboarding (from `/pd`, `/pb`, `/gh` to `/dx`, `/ta`, `/gs`)
 - **Context Reading Bypass**: Agents can no longer proceed without checking project documentation
 - **Workflow Sequence Violations**: System now enforces proper agent sequence (BA → DX → TA → GS → BO)
+- **Idea Description Bypass**: Bushi Start now automatically routes to Business Architect when users describe ideas
 
 ### Added
 - **Mandatory Workflow Validation**: Bushi Start now enforces proper agent selection sequence
 - **Context Reading Requirements**: All agents must check existing documentation before proceeding
 - **Business-First Approach**: New ideas must start with Business Architect, not Technical Architect
 - **Documentation Foundation Requirements**: Proper project foundation required before technical work
+- **Automatic Idea Routing**: Bushi Start automatically activates Business Architect agent when users describe ideas
+- **PRD/Roadmap Auto-Creation**: New ideas automatically trigger business validation and documentation creation
 
 ### Changed
 - **Enhanced Bushi Start Agent**: Added mandatory behavioral rules and workflow enforcement

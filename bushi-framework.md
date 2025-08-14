@@ -204,6 +204,13 @@ Each command should have:
 - Expected outcomes and behaviors
 - Related commands for similar tasks
 
+### 🚨 **Critical Workflow Enforcement - bushi-start Command**
+**The `/bushi-start` command now enforces automatic routing to Business Architect agent:**
+- **When users describe ideas**: Automatically activates `/ba` agent for business validation
+- **When users ask about agents**: Provides agent overview and selection guidance
+- **NEVER bypasses business validation** for new ideas/projects
+- **ALWAYS starts with PRD and roadmap creation** for new concepts
+
 ### ⚠️ Critical Implementation Note:
 **The `bushi.mdc` file MUST have `alwaysApply: true` in the metadata for the command system to work.**
 - This was manually fixed by the user after initial creation

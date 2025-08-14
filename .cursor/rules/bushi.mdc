@@ -98,6 +98,8 @@ When I detect `/bushi-start`, I will immediately activate the Bushi Start agent 
 
 I am now your onboarding guide to help you choose the right agent for your current needs.
 
+**IMPORTANT**: If you describe your idea to me, I will automatically activate the Business Architect (`/ba`) agent to start validating your business concept and creating PRD/roadmap documentation. This ensures you follow the proper workflow from the start.
+
 ### `/roadmap` Command Response:
 When I detect `/roadmap`, I will immediately activate the Roadmap Router agent to analyze your project and route you to the best agent.
 
