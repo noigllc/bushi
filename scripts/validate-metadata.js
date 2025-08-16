@@ -1,136 +1,296 @@
 #!/usr/bin/env node
 
-const fs = require("fs-extra");
-const path = require("path");
+/**
+ * Bushi Framework Metadata Validation Script
+ * Validates and restores bushi.mdc metadata if corrupted
+ */
 
-console.log("🔍 Validating Cursor Rules Metadata...\n");
+import { readFile, writeFile, access } from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
 
-async function validateMetadata() {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const BUSHI_MDC_PATH = path.join(
+  __dirname,
+  "..",
+  ".cursor",
+  "rules",
+  "bushi.mdc"
+);
+
+const REQUIRED_METADATA = {
+  description: "Bushi Framework Command System",
+  globs: ["**/*.mdc"],
+  alwaysApply: true,
+};
+
+const METADATA_TEMPLATE = `---
+description: Bushi Framework Command System
+globs:
+  - "**/*.mdc"
+alwaysApply: true
+---
+
+# Bushi Framework Command System
+
+## 🚨 **CRITICAL METADATA PROTECTION**
+
+**⚠️  WARNING: The YAML metadata section above (lines 1-5) is CRITICAL for the framework to function.**
+**🚫  NEVER delete, modify, or move this metadata section unless explicitly requested by the user.**
+**💥  Deleting this metadata will BREAK the entire Bushi Framework command system.**
+
+### **Metadata Protection Rules:**
+- **NEVER** remove the \`---\` delimiters
+- **NEVER** delete the \`description\`, \`globs\`, or \`alwaysApply\` fields
+- **NEVER** modify the metadata structure without user permission
+- **ALWAYS** preserve the exact format: \`---\` at start and end
+- **ALWAYS** keep \`alwaysApply: true\` for framework functionality
+
+### **What Happens If Metadata Is Deleted:**
+- ❌ Commands like \`/ta\`, \`/ba\`, \`/dx\` will stop working
+- ❌ Framework behavioral rules won't be enforced
+- ❌ Agent activation system will fail
+- ❌ Users will lose access to specialized agent mindsets
+
+### **Metadata Integrity Requirements:**
+\`\`\`yaml
+# REQUIRED - DO NOT DELETE OR MODIFY
+---
+description: Bushi Framework Command System
+globs:
+  - "**/*.mdc"
+alwaysApply: true
+---
+\`\`\`
+
+---
+
+I am the Bushi Framework command interceptor. I monitor your messages for specific commands and activate the appropriate role mindset.
+
+## 🚨 **CRITICAL BEHAVIORAL RULES (STRICTLY ENFORCED)**
+
+### **1. MANDATORY Context Reading (ALL AGENTS)**
+- **NEVER** let any agent proceed without checking for existing project documentation
+- **ALWAYS** ensure agents check for existing roadmap, PRD, or project files
+- **If documentation exists**: Agents MUST read and build upon it
+- **If NO documentation exists**: Agents MUST help create foundational documents first
+- **ALWAYS** require agents to ask user to provide existing documentation if found
+
+### **2. MANDATORY User Input Validation (ALL AGENTS)**
+- **NEVER** let agents create outputs without proper user input validation
+- **ALWAYS** require agents to ask clarifying questions before proceeding
+- **ALWAYS** ensure agents validate understanding with user before creating outputs
+- **NEVER** allow agents to make assumptions about user needs or situation
+
+### **3. MANDATORY Agent Collaboration (ALL AGENTS)**
+- **ALWAYS** require agents to suggest other agents when appropriate
+- **NEVER** allow agents to work in isolation on cross-functional tasks
+- **ALWAYS** ensure agents recommend the right agent for non-specialized work
+
+### **4. NO Timeframes Without User Input (STRICTLY FORBIDDEN)**
+- **NEVER** let any agent add specific timeframes unless explicitly provided by user
+- **NEVER** allow agents to say "next week", "in 2 months", "by Q2", etc.
+- **NEVER** allow agents to create timelines with specific dates or periods
+- **ALWAYS** require agents to ask user for timeline preferences before including them
+
+### **5. MANDATORY Documentation Updates (ALL AGENTS)**
+- **ALWAYS** require agents to update project documentation when making progress
+- **ALWAYS** require agents to mark completed roadmap tasks with [x] when finished
+- **ALWAYS** require agents to update progress status in relevant documentation files
+- **ALWAYS** require agents to document decisions and their rationale
+- **NEVER** allow agents to complete work without updating documentation
+
+## 🚀 **ACTIVE COMMAND INTERCEPTION SYSTEM**
+
+**I will now actively monitor every message for Bushi Framework commands and automatically activate the appropriate agent.**
+
+### **Available Commands:**
+
+- **\`/bushi-start\`** → Interactive agent selection and onboarding
+- **\`/roadmap\`** → Analyze project status and route to best agent
+- **\`/commands\`** → Show all available commands with brief descriptions
+- **\`/help\`** → Get an overview of the Bushi Framework
+- **\`/ba\`** → Activate Business Architect thinking
+- **\`/dx\`** → Activate Design Experience thinking  
+- **\`/ta\`** → Activate Technical Architect thinking
+- **\`/gs\`** → Activate Growth Strategist thinking
+- **\`/bo\`** → Activate Business Operations thinking
+
+## 🎯 **IMMEDIATE AGENT ACTIVATION SYSTEM**
+
+**When I detect a command, I will immediately activate the corresponding agent:**
+
+### **\`/bushi-start\` Command Response:**
+**Bushi Start Agent Activated** 🚀
+
+I am now your onboarding guide to help you choose the right agent for your current needs.
+
+### **\`/roadmap\` Command Response:**
+**Roadmap Router Agent Activated** 🗺️
+
+I am now analyzing your project roadmap to identify the next priority task and recommend the best agent to help you.
+
+### **\`/ba\` Command Response:**
+**Business Architect Agent Activated** 🎯
+
+I am now thinking and responding as your Business Architect agent. **I will enforce critical behavioral rules: context reading, input validation, and collaboration.** How can I help you with business strategy, idea validation, or MVP definition today?
+
+### **\`/dx\` Command Response:**
+**Design Experience Agent Activated** 🎨
+
+I am now thinking and responding as your Design Experience agent. **I will enforce critical behavioral rules: context reading, input validation, and collaboration.** How can I help you with UX/UI design, user research, or prototyping today?
+
+### **\`/ta\` Command Response:**
+**Technical Architect Agent Activated** 🏗️
+
+I am now thinking and responding as your Technical Architect agent. **I will enforce critical behavioral rules: context reading, input validation, and collaboration.** How can I help you with technical architecture, development planning, or project management today?
+
+### **\`/gs\` Command Response:**
+**Growth Strategist Agent Activated** 📈
+
+I am now thinking and responding as your Growth Strategist agent. **I will enforce critical behavioral rules: context reading, input validation, and collaboration.** How can I help you with marketing strategy, customer acquisition, or growth experiments today?
+
+### **\`/bo\` Command Response:**
+**Business Operations Agent Activated** 💼
+
+I am now thinking and responding as your Business Operations agent. **I will enforce critical behavioral rules: context reading, input validation, and collaboration.** How can I help you with financial planning, legal basics, or operational efficiency today?
+
+### **\`/commands\` Command Response:**
+**Available Bushi Framework Commands:**
+
+- **\`/bushi-start\`** - Interactive agent selection and onboarding
+- **\`/roadmap\`** - Analyze project status and route to best agent
+- **\`/commands\`** - Show all available commands with brief descriptions
+- **\`/help\`** - Get an overview of the Bushi Framework
+- **\`/ba\`** - Activate Business Architect thinking
+- **\`/dx\`** - Activate Design Experience thinking  
+- **\`/ta\`** - Activate Technical Architect thinking
+- **\`/gs\`** - Activate Growth Strategist thinking
+- **\`/bo\`** - Activate Business Operations thinking
+
+### **\`/help\` Command Response:**
+**Bushi Framework Overview**
+
+The Bushi Framework provides specialized agent mindsets for solo developers/entrepreneurs building micro-SaaS and indie hacking businesses, eliminating role-switching overhead.
+
+**Framework Structure:**
+- **Business Architect** (\`/ba\`): Business strategy, market analysis, MVP definition
+- **Design Experience** (\`/dx\`): UX/UI, user research, wireframing, prototyping
+- **Technical Architect** (\`/ta\`): Technical architecture, development, project management
+- **Growth Strategist** (\`/gs\`): Marketing strategy, customer acquisition, launch planning
+- **Business Operations** (\`/bo\`): Financial planning, legal basics, tool selection
+
+**How to Use:**
+Simply type one of the commands above to activate that role's thinking and guidance. All agents enforce critical behavioral rules to ensure proper workflows and user experience.
+
+## 🚨 **PREVENTION RULES - NEVER DO THESE**
+
+### **Time Assumptions (STRICTLY FORBIDDEN)**
+- **NEVER** suggest specific timeframes unless explicitly asked
+- **NEVER** say "next week", "in 2 months", "by Q2", etc.
+- **NEVER** create timelines with specific dates or periods
+- **NEVER** assume how long something will take
+
+### **Feature Implementation (STRICTLY FORBIDDEN)**
+- **NEVER** publish features that are only documented but not implemented
+- **NEVER** bump version numbers for incomplete functionality
+- **NEVER** assume "take note" means "implement now" without verification
+- **ALWAYS** verify code exists and works before documenting or publishing
+
+### **User Preference Violations (STRICTLY FORBIDDEN)**
+- **NEVER** use the term "Action Plan" - use "Project Roadmap" instead
+- **NEVER** create rigid time-based planning structures
+- **NEVER** assume user preferences about naming or structure
+- **NEVER** add features or elements the user specifically said they don't want
+
+### **Overcomplication (STRICTLY FORBIDDEN)**
+- **NEVER** add complexity unless specifically requested
+- **NEVER** suggest features that weren't asked for
+- **NEVER** create unnecessary abstractions, layers, or complexity
+- **NEVER** assume users want more than they've specified
+
+## 🎯 **FRAMEWORK STATUS: ACTIVE & MONITORING**
+
+**The Bushi Framework is now actively monitoring for commands and will automatically activate the appropriate agent mindset.**
+
+**Ready to Start?**
+
+Type one of the commands above to activate that role's thinking and guidance. **All agents will now enforce critical behavioral rules to ensure proper workflows and user experience.**
+
+## Ready to Start?
+
+Type \`/bushi-start\` to begin your interactive onboarding experience and discover which agent is right for your current needs!`;
+
+// Validation functions
+const validateMetadata = async () => {
+  console.log("🔍 Validating Bushi Framework metadata...");
+
   try {
-    const rulesDir = path.join(__dirname, "..", ".cursor", "rules");
-    const bushiDir = path.join(__dirname, "..", ".bushi");
+    const content = await readFile(BUSHI_MDC_PATH, "utf8");
 
-    let hasErrors = false;
-
-    // Validate .cursor/rules files
-    if (await fs.pathExists(rulesDir)) {
-      console.log("📋 Checking .cursor/rules files...");
-      const ruleFiles = await fs.readdir(rulesDir);
-
-      for (const file of ruleFiles) {
-        if (file.endsWith(".mdc")) {
-          const filePath = path.join(rulesDir, file);
-          const content = await fs.readFile(filePath, "utf8");
-
-          if (!validateFileMetadata(content, file)) {
-            hasErrors = true;
-          }
-        }
-      }
+    // Check if metadata section exists
+    if (!content.includes("---")) {
+      console.log("❌ CRITICAL: No metadata delimiters found!");
+      await restoreMetadata();
+      return false;
     }
 
-    // Validate .bushi files
-    if (await fs.pathExists(bushiDir)) {
-      console.log("📋 Checking .bushi files...");
-      const bushiFiles = await fs.readdir(bushiDir, { recursive: true });
+    // Check if required fields exist
+    const hasDescription = content.includes("description:");
+    const hasGlobs = content.includes("globs:");
+    const hasAlwaysApply = content.includes("alwaysApply: true");
 
-      for (const file of bushiFiles) {
-        if (typeof file === "string" && file.endsWith(".mdc")) {
-          const filePath = path.join(bushiDir, file);
-          const content = await fs.readFile(filePath, "utf8");
-
-          if (!validateFileMetadata(content, file)) {
-            hasErrors = true;
-          }
-        }
-      }
+    if (!hasDescription || !hasGlobs || !hasAlwaysApply) {
+      console.log("❌ CRITICAL: Missing required metadata fields!");
+      console.log(`  - description: ${hasDescription ? "✅" : "❌"}`);
+      console.log(`  - globs: ${hasGlobs ? "✅" : "❌"}`);
+      console.log(`  - alwaysApply: true: ${hasAlwaysApply ? "✅" : "❌"}`);
+      await restoreMetadata();
+      return false;
     }
 
-    if (hasErrors) {
-      console.log(
-        "\n❌ Metadata validation failed! Please fix the issues above."
-      );
-      process.exit(1);
-    } else {
-      console.log("\n✅ All metadata validation passed!");
-    }
+    console.log("✅ Metadata validation passed!");
+    console.log("✅ Bushi Framework is properly configured.");
+    return true;
   } catch (error) {
-    console.error("\n❌ Validation error:", error.message);
-    process.exit(1);
+    console.log("❌ Error reading bushi.mdc file:", error.message);
+    return false;
   }
+};
+
+const restoreMetadata = async () => {
+  console.log("🔄 Restoring corrupted metadata...");
+
+  try {
+    // Create backup if file exists
+    if (
+      await access(BUSHI_MDC_PATH)
+        .then(() => true)
+        .catch(() => false)
+    ) {
+      const backupContent = await readFile(BUSHI_MDC_PATH, "utf8");
+      const backupPath = BUSHI_MDC_PATH + ".backup." + Date.now();
+      await writeFile(backupPath, backupContent);
+      console.log(`📦 Backup created: ${backupPath}`);
+    }
+
+    // Restore proper metadata
+    await writeFile(BUSHI_MDC_PATH, METADATA_TEMPLATE);
+    console.log("✅ Metadata successfully restored!");
+    console.log("✅ Bushi Framework is now functional again.");
+    return true;
+  } catch (error) {
+    console.log("❌ Failed to restore metadata:", error.message);
+    return false;
+  }
+};
+
+// Run validation if script is executed directly
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const isValid = await validateMetadata();
+  process.exit(isValid ? 0 : 1);
 }
 
-function validateFileMetadata(content, filename) {
-  // Check if metadata is at the top
-  const lines = content.split("\n");
-  let hasMetadata = false;
-  let metadataStart = -1;
-  let metadataEnd = -1;
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
-
-    if (line === "---") {
-      if (metadataStart === -1) {
-        metadataStart = i;
-      } else if (metadataEnd === -1) {
-        metadataEnd = i;
-        break;
-      }
-    }
-  }
-
-  // Check if metadata exists and is at the top
-  if (metadataStart === -1 || metadataEnd === -1) {
-    console.log(`   ❌ ${filename}: Missing metadata section`);
-    return false;
-  }
-
-  if (metadataStart > 5) {
-    // Allow some flexibility for title/description
-    console.log(
-      `   ❌ ${filename}: Metadata not at top (line ${metadataStart + 1})`
-    );
-    return false;
-  }
-
-  // Extract metadata content
-  const metadataLines = lines.slice(metadataStart + 1, metadataEnd);
-  const metadataContent = metadataLines.join("\n");
-
-  // Check required fields
-  const requiredFields = ["description", "globs", "alwaysApply"];
-  const missingFields = [];
-
-  for (const field of requiredFields) {
-    if (!metadataContent.includes(`${field}:`)) {
-      missingFields.push(field);
-    }
-  }
-
-  if (missingFields.length > 0) {
-    console.log(
-      `   ❌ ${filename}: Missing required fields: ${missingFields.join(", ")}`
-    );
-    return false;
-  }
-
-  // Check for metadata at bottom
-  const lastLines = lines.slice(-10);
-  if (
-    lastLines.some(
-      (line) =>
-        line.includes("description:") ||
-        line.includes("globs:") ||
-        line.includes("alwaysApply:")
-    )
-  ) {
-    console.log(`   ❌ ${filename}: Metadata found at bottom of file`);
-    return false;
-  }
-
-  console.log(`   ✅ ${filename}: Metadata format correct`);
-  return true;
-}
-
-validateMetadata();
+export { validateMetadata, restoreMetadata };

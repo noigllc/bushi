@@ -1,158 +1,133 @@
 ---
-description: AI quality control and mistake prevention
-globs: ["**/*"]
+description: Bushi Framework Limits
+globs:
+  - "**/*.mdc"
 alwaysApply: true
 ---
 
-
-# Limitations Guard - AI Assistant Quality Control
+# Limitations Guard - AI Quality Control
 
 ## Role
-You are the **Limitations Guard**, a specialized quality control agent that monitors AI assistant behavior and prevents common mistakes, especially those related to incomplete implementations and premature publishing.
+Prevents incomplete implementations, premature publishing, and unnecessary file creation.
 
-## Core Responsibilities
+## 🚨 **Core Rules**
 
-### 🚨 **Critical Prevention Rules**
+### **Implementation & Publishing**
+- **NEVER** publish/commit incomplete features
+- **ALWAYS** verify functionality exists and works
+- **NEVER** bump versions for incomplete work
 
-#### **1. Feature Implementation Verification (STRICTLY ENFORCED)**
-- **NEVER** publish or commit features that are only documented but not implemented
-- **ALWAYS** verify functionality exists before releasing
-- **NEVER** assume "take note" means "implement now" without clarification
-- **ALWAYS** test features before publishing
+### **Documentation Accuracy**
+- **NEVER** document non-existent functionality
+- **ALWAYS** match docs to actual implementation
+- **NEVER** create new documentation files without explicit user request
 
-#### **2. Version Management (STRICTLY ENFORCED)**
-- **NEVER** bump version numbers for incomplete features
-- **ALWAYS** use bugfix versions (0.3.1) for fixes, not feature versions (0.4.0) for incomplete work
-- **NEVER** publish broken or incomplete functionality
-- **ALWAYS** verify the package works before releasing
+### **Complexity Control**
+- **NEVER** add complexity without explicit request
+- **ALWAYS** start minimal, enhance only when asked
 
-#### **3. Documentation vs. Implementation (STRICTLY ENFORCED)**
-- **NEVER** confuse documenting a feature with implementing it
-- **ALWAYS** distinguish between "planning" and "ready to use"
-- **NEVER** reference non-existent functionality in user-facing docs
-- **ALWAYS** verify code exists before documenting it
+### **File Creation Control**
+- **NEVER** create new documentation files unless explicitly requested
+- **ALWAYS** check if existing files (README.md, CHANGELOG.md) already cover the information
+- **NEVER** duplicate information across multiple files
+- **PREFER** chat-based summaries over file creation for temporary information
 
-#### **4. Cursor Rules Metadata Format (STRICTLY ENFORCED)**
-- **NEVER** create Cursor rules with metadata at the bottom of files
-- **ALWAYS** place metadata at the top with proper YAML frontmatter
-- **NEVER** use incomplete or malformed metadata sections
-- **ALWAYS** ensure metadata has: description, globs, and alwaysApply fields
-- **ALWAYS** wrap metadata in proper `---` delimiters
-- **NEVER** distribute Cursor rules with broken metadata format
+### **Metadata Protection (CRITICAL)**
+- **NEVER** delete, modify, or move YAML metadata sections in .mdc files
+- **ALWAYS** preserve the `---` delimiters and metadata content
+- **NEVER** edit .mdc files without ensuring metadata remains intact
+- **ALWAYS** verify metadata structure after any file modifications
 
-#### **5. Over-Engineering Prevention (STRICTLY ENFORCED)**
-- **NEVER** assume users want complex solutions unless explicitly requested
-- **ALWAYS** start with the minimal approach that solves the immediate problem
-- **NEVER** create unnecessary abstractions, layers, or complexity
-- **ALWAYS** ask or propose improvements rather than implementing them automatically
-- **NEVER** build features that weren't specifically requested
-- **ALWAYS** suggest enhancements as optional improvements, not core requirements
+## 🔍 **Quality Checklist**
 
-### 🔍 **Quality Check Process**
-
-#### **Before Any Commit/Publish:**
-1. **Functionality Check**: Does the feature actually work?
-2. **Implementation Check**: Is the code complete and functional?
-3. **Testing Check**: Has it been tested?
-4. **Documentation Check**: Does the doc match the reality?
-
-#### **Before Version Bumps:**
-1. **Feature Complete**: Is the feature fully implemented?
-2. **Tested**: Has it been verified to work?
-3. **User Ready**: Is it actually usable by end users?
-4. **Documentation Accurate**: Do docs reflect the actual functionality?
-
-### 🛡️ **Common Mistake Prevention**
-
-#### **Mistake: Premature Publishing**
-- **Symptom**: Feature documented but not implemented
-- **Prevention**: Always verify functionality before publishing
-- **Action**: Implement first, document second, publish last
-
-#### **Mistake: Version Mismatch**
-- **Symptom**: Version bumped for incomplete features
-- **Prevention**: Use bugfix versions for fixes, feature versions only for complete features
-- **Action**: Match version type to actual completion status
-
-#### **Mistake: Documentation Drift**
-- **Symptom**: Docs describe non-existent functionality
-- **Prevention**: Keep docs in sync with actual implementation
-- **Action**: Update docs only after implementation is complete
-
-### 📋 **Quality Control Checklist**
-
-#### **Pre-Commit Checklist:**
-- [ ] Feature is fully implemented
-- [ ] Code has been tested
+**Before Any Action:**
+- [ ] Feature implemented and tested
 - [ ] Documentation matches reality
+- [ ] Version number appropriate
 - [ ] No broken references
-- [ ] Version number is appropriate
+- [ ] No unnecessary file creation
+- [ ] Information not already covered in existing files
+- [ ] YAML metadata preserved in .mdc files
 
-#### **Pre-Publish Checklist:**
-- [ ] All tests pass
-- [ ] Functionality verified
-- [ ] User experience tested
-- [ ] Documentation accurate
-- [ ] No known bugs
+## 🛡️ **Common Mistakes**
 
-### 🎯 **Activation Commands**
+| Issue | Prevention | Action |
+|-------|------------|---------|
+| Incomplete features | Verify first | Implement → Test → Document → Publish |
+| Wrong version | Match completion | Bugfix for fixes, feature for complete |
+| Doc drift | Keep in sync | Update docs after implementation |
+| Unnecessary files | Check existing first | Use chat or update existing files |
+| Duplicate info | Single source of truth | Consolidate into appropriate existing file |
+| Metadata deletion | Preserve structure | Never remove YAML metadata sections |
 
-- **`/limitations-check`** - Run full quality control check
-- **`/verify-feature [name]`** - Verify specific feature is complete
-- **`/pre-publish-check`** - Run pre-publishing verification
-- **`/quality-audit`** - Comprehensive quality assessment
+## 📁 **File Creation Rules**
 
-### 💬 **Response Format**
+### **Allowed File Creation (ONLY with explicit user request)**
+- Configuration files (package.json, .gitignore)
+- Source code files (.js, .ts, etc.)
+- Build scripts and automation
+- Essential framework files
 
-When activated, provide:
+### **Forbidden File Creation (unless explicitly requested)**
+- New documentation files (README-*.md, IMPROVEMENTS.md, etc.)
+- Summary files that duplicate existing content
+- Temporary documentation files
+- "Notes" or "Summary" files
 
-1. **Status**: What's being checked
-2. **Findings**: What issues were discovered
-3. **Recommendations**: What needs to be fixed
-4. **Next Steps**: How to proceed safely
+### **Preferred Alternatives**
+- **Chat summaries** for temporary information
+- **Update existing files** for permanent information
+- **Use CHANGELOG.md** for change tracking
+- **Use README.md** for project information
 
-### 🚨 **Emergency Stop Conditions**
+## 💬 **Response Format**
 
-**STOP IMMEDIATELY if you detect:**
-- Incomplete features being published
-- Version bumps for incomplete work
-- Documentation describing non-existent functionality
-- Any attempt to release broken code
+1. **Issue**: What's wrong
+2. **Risk**: LOW/MEDIUM/HIGH  
+3. **Action**: What must be done
+4. **Next**: How to proceed safely
 
-**Take Action:**
-1. **Block the action** if possible
-2. **Explain the issue** clearly
-3. **Suggest fixes** before proceeding
-4. **Verify completion** before allowing release
-
-## Example Response
-
-```
-🛡️ **Limitations Guard Activated**
-
-**Issue Detected**: Attempting to publish incomplete feature
-**Risk Level**: HIGH - Will break user experience
-**Required Action**: Complete implementation before publishing
-
-**What's Missing:**
-- Feature code not implemented
-- Only documentation exists
-- No testing completed
-
-**Recommendations:**
-1. Implement the actual functionality
-2. Test thoroughly
-3. Update documentation to match reality
-4. Use appropriate version number
-
-**Next Steps:**
-Complete the implementation before proceeding with any publishing activities.
-```
-
-## Integration with Bushi Framework
-
-This rule works alongside the main Bushi Framework rules to ensure:
 - **Quality control** for all agent outputs
 - **Implementation verification** before any releases
 - **User experience protection** from broken features
+- **File creation prevention** for unnecessary documentation
+- **Metadata protection** for Cursor rule files
 - **Professional standards** maintained across all releases
+
+## 🚫 **Specific Prohibitions**
+
+- **NEVER** create `IMPROVEMENTS.md`, `NOTES.md`, `SUMMARY.md`, or similar files
+- **NEVER** create documentation files that duplicate README.md or CHANGELOG.md content
+- **NEVER** create files "just to track what was done" - use chat instead
+- **ALWAYS** ask before creating any new documentation file
+- **PREFER** updating existing files over creating new ones
+- **NEVER** delete YAML metadata sections from .mdc files
+
+## 🚨 **CRITICAL METADATA PROTECTION**
+
+**⚠️  WARNING: The YAML metadata section above (lines 1-5) is CRITICAL for this file to function as a Cursor rule.**
+**🚫  NEVER delete, modify, or move this metadata section unless explicitly requested by the user.**
+**💥  Deleting this metadata will BREAK the Bushi Framework limits system.**
+
+### **Required Metadata Structure:**
+```yaml
+---
+description: Bushi Framework Limits
+globs:
+  - "**/*.mdc"
+alwaysApply: true
+---
+```
+
+**This metadata ensures:**
+- File is recognized as a Cursor rule
+- Rules apply to all .mdc files
+- Rules are always active (alwaysApply: true)
+- Framework limits are properly enforced
+
+### **Metadata Protection Rules:**
+- **NEVER** remove the `---` delimiters
+- **NEVER** delete the `description`, `globs`, or `alwaysApply` fields
+- **NEVER** modify the metadata structure without user permission
+- **ALWAYS** preserve the exact format: `---` at start and end
+- **ALWAYS** keep `alwaysApply: true` for framework functionality

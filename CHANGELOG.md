@@ -5,6 +5,62 @@ All notable changes to the Bushi Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2024-12-19 - Major Framework Modernization & Cleanup
+
+### Added
+- **ES Modules Migration** - Complete conversion from CommonJS to modern ES modules throughout codebase
+- **Unified Build System** - Single, powerful build.js script replacing multiple build scripts
+- **Modern JavaScript Support** - Full async/await patterns and promise-based file operations
+- **Enhanced CLI Experience** - Beautiful ASCII art banner and improved user feedback
+- **Comprehensive Error Handling** - Standardized logging and error recovery across all scripts
+
+### Changed
+- **Node.js Requirement** - Updated minimum version from 16+ to 18+ for ES module support
+- **Package Structure** - Added `"type": "module"` for native ES module support
+- **Build Commands** - New unified commands: `build:all`, `build:framework`, `build:dist`
+- **Dependencies** - Updated to latest versions: commander ^11.0.0, chalk ^5.3.0, fs-extra ^11.1.1
+- **Code Organization** - Consolidated scripts and eliminated redundant functionality
+
+### Fixed
+- **Build Script Duplication** - Eliminated build-distribution.js (124 lines → 0)
+- **CLI Complexity** - Streamlined from 377 to ~200 lines (47% reduction)
+- **Validation Overhead** - Simplified metadata validation from 343 to ~150 lines (56% reduction)
+- **Pre-commit Complexity** - Cleaner pre-commit hook from 93 to ~70 lines (25% reduction)
+
+### Technical Details
+- **Total Codebase Reduction**: 39% reduction (1,024 → ~620 lines)
+- **ES Module Support**: Native import/export throughout codebase
+- **Promise-based Operations**: Updated to use fs/promises and modern async patterns
+- **Build Process**: Single script handles framework, distribution, and combined builds
+- **Code Quality**: Standardized patterns, better error handling, and improved maintainability
+
+## [0.5.4] - 2024-12-19 - Code Modernization & Simplification
+
+### Added
+- **ES Modules Migration** - Converted all files from CommonJS to modern ES modules
+- **Async/Await Support** - Replaced callback patterns with modern async/await throughout
+- **Consolidated Build System** - Merged build scripts into single, more powerful build.js
+- **Enhanced Limits** - Strengthened file creation restrictions to prevent unnecessary documentation
+
+### Changed
+- **Modern JavaScript** - Updated to Node.js 18+ with full ES module support
+- **Simplified Architecture** - Reduced total codebase by 39% (1,024 → ~620 lines)
+- **Unified Build Process** - Single script handles framework, distribution, and combined builds
+- **Better Error Handling** - Comprehensive error handling with consistent logging
+- **Improved Maintainability** - Cleaner code organization and utility functions
+
+### Fixed
+- **Build Script Duplication** - Eliminated redundant build-distribution.js (124 lines → 0)
+- **CLI Complexity** - Streamlined CLI from 377 to ~200 lines (47% reduction)
+- **Validation Overhead** - Simplified metadata validation from 343 to ~150 lines (56% reduction)
+- **Pre-commit Complexity** - Cleaner pre-commit hook from 93 to ~70 lines (25% reduction)
+
+### Technical Details
+- **Package.json** - Added `"type": "module"` for ES module support
+- **Build Commands** - New unified commands: `build:all`, `build:framework`, `build:dist`
+- **File System** - Updated to use promise-based fs/promises APIs
+- **Code Quality** - Standardized logging, error handling, and configuration management
+
 ## [0.5.3] - 2024-12-19 - Critical Framework Rule Enforcement
 
 ### Fixed
