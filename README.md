@@ -1,98 +1,120 @@
-# Bushi Framework
+# 🚀 Bushi Framework
+## Build Shit Fast
+> A comprehensive framework for solo developers/entrepreneurs to build micro-SaaS and indie hacking businesses.
 
-**Build Shit Fast** - A comprehensive framework for solo developers to build micro-SaaS businesses.
 
-> 🚀 **v0.6.0** - Major modernization with ES modules, 39% code reduction, and unified build system
+
+## 🎯 **Philosophy**
+
+**Build Shit Fast** - No overthinking, no role-switching overhead, just focused expertise when you need it.
+
+
+## What It Is
+
+Bushi Framework is a set of "mental roles" that can be activated when needed, eliminating the overhead of role-switching for solo founders. Think of it as having a team of experts in your head that you can activate with simple commands.
+
+**Currently only works with Cursor IDE** - The framework uses Cursor rules (`.mdc` files) to detect and activate the different agent roles.
+
+**Node.js:** Requires Node.js version 18.0.0 or higher. For optimal ES Module compatibility, Node.js 20.0.0+ is recommended.
+
 
 ## 🚀 Quick Start
 
-```bash
-# Install globally
-npm install -g bushi
+**Get Bushi Framework running in your project:**
 
-# Initialize in your project
-bushi init
+1. **Install & Initialize:**
+   ```bash
+   npx bushi@latest init
+   ```
 
-# Use in Cursor IDE with commands like /ba, /ta, /dx, etc.
-```
+2. **Open your project in Cursor IDE**
 
-## ✨ What's New in v0.6.0
+3. **Start using the agents with commands like `/ba`, `/ta`, `/dx`, etc.**
 
-- **🔄 ES Modules**: Complete migration to modern JavaScript with native import/export
-- **📉 39% Code Reduction**: Streamlined from 1,024 to ~620 lines while maintaining all functionality
-- **🏗️ Unified Build System**: Single build script handles framework, distribution, and combined builds
-- **⚡ Performance**: Faster execution with modern async/await patterns
-- **🔧 Modern CLI**: Beautiful interface with enhanced user experience
-- **📦 Latest Dependencies**: Updated to latest stable versions
+Bushi automatically handles updates when you run the init command again.
 
-## 🏗️ Project Structure
+
+## 📁 How It's Structured
+
+When you run `npx bushi@latest init`, Bushi creates this folder structure in your project:
 
 ```
-bushi/
-├── bin/           # CLI executable
-├── scripts/       # Build and validation scripts
-├── dist/          # Build output
-└── .git/          # Version control
+your-project/
+├── .cursor/
+│   └── rules/
+│       ├── bushi.mdc          # Main framework rules
+│       └── bushi-limits.mdc   # Framework constraints
+└── .bushi/
+    ├── agents/                # Agent-specific files
+    │   ├── business-architect.mdc
+    │   ├── design-experience.mdc
+    │   ├── technical-architect.mdc
+    │   ├── growth-strategist.mdc
+    │   └── business-operations.mdc
+    ├── bushi-start.mdc        # Framework onboarding
+    ├── roadmap-router.mdc     # Smart task routing
+    └── docs/                  # Project documentation folder
+        ├── roadmap.md         # Your project roadmap (created by you)
+        └── prd.md            # Product requirements document
 ```
 
-## 🛠️ Development
+The `.cursor/rules/` files tell Cursor IDE how to recognize and activate Bushi commands. The `.bushi/` folder contains the framework files, while the `docs/` subfolder is where you'll create your project-specific documentation like roadmaps and requirements.
 
-### Prerequisites
-- **Node.js 18+** (ES modules support required)
-- npm or yarn
 
-### Build Commands
-```bash
-# Build everything (framework + distribution)
-npm run build:all
+## ✨ **What Makes Bushi Special**
 
-# Build only framework
-npm run build:framework
+- 🚀 **Instant Activation** - Commands like `/ba` activate specialized expertise
+- 🎯 **Deep Focus** - Each agent has deep knowledge in their domain  
+- 🧠 **Smart Context** - Agents understand your project and goals
+- ⚡ **No Overhead** - Eliminates role-switching mental friction
+- 📋 **Automatic Progress Tracking** - Documentation stays synchronized automatically
+- 🔄 **Smart Updates** - Agents automatically update roadmaps and track completion
 
-# Build only distribution package
-npm run build:dist
 
-# Validate metadata
-npm run validate
+## How It Works
 
-# Run pre-commit validation
-npm run pre-commit
-```
+| Command | Agent | Purpose |
+|---------|-------|---------|
+| `/bushi-start` | 🚀 **Framework Onboarding** | Interactive agent selection and guidance |
+| `/ba` | 🎯 **Business Architect** | Business strategy, market analysis, idea generation |
+| `/dx` | 🎨 **Design Experience** | UX/UI, user research, wireframing |
+| `/ta` | 🏗️ **Technical Architect** | Technical architecture, development, project management |
+| `/gs` | 📈 **Growth Strategist** | Marketing, customer acquisition, launch strategy |
+| `/bo` | 💼 **Business Operations** | Financial planning, legal basics, operations |
+| `/roadmap` | 🗺️ **Smart Routing** | Analyzes roadmap and suggests best agent for next task |
 
-### Scripts Overview
 
-- **`scripts/build.js`** - Consolidated build system for both framework and distribution
-- **`scripts/validate-metadata.js`** - Metadata validation and restoration
-- **`scripts/pre-commit.js`** - Git pre-commit hook for metadata integrity
+## Agent Overview
 
-## 🎯 Framework Features
+### 🚀 Framework Onboarding
+Your friendly guide to Bushi Framework. Run `/bushi-start` to get an interactive overview of all available agents and choose the right one for your current needs. Perfect for new users or when you're unsure which agent to use.
 
-- **Business Architect** (`/ba`) - Business strategy and MVP definition
-- **Design Experience** (`/dx`) - UX/UI and user research
-- **Technical Architect** (`/ta`) - Technical architecture and development
-- **Growth Strategist** (`/gs`) - Marketing and customer acquisition
-- **Business Operations** (`/bo`) - Financial and operational planning
 
-## 🔧 Technical Details
+### 🎯 Business Architect
+Your business strategy expert. Helps you brainstorm new ideas, validate existing concepts, analyze markets, and define business models. Perfect for the early stages of product development.
 
-- **ES Modules**: Modern JavaScript with `import/export` syntax
-- **Async/Await**: Full async support throughout codebase
-- **Error Handling**: Comprehensive error handling and validation
-- **Metadata Protection**: Automatic metadata validation and restoration
-- **Code Quality**: Standardized patterns and improved maintainability
 
-## 📚 Documentation
+### 🎨 Design Experience  
+Your UX/UI and customer research specialist. Assists with user interviews, wireframing, prototyping, and creating intuitive user experiences. Essential for understanding your users and designing solutions they'll love.
 
-For full documentation and usage examples, visit: https://github.com/noigllc/bushi
 
-## 🤝 Contributing
+### 🏗️ Technical Architect
+Your technical architect and development partner. Helps with tech stack selection, project planning, architecture decisions, and development timelines. Your go-to for turning ideas into working code.
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run validation: `npm run validate`
-5. Submit a pull request
 
-## 📄 License
+### 📈 Growth Strategist
+Your marketing and customer acquisition expert. Guides you through launch strategies, marketing campaigns, growth experiments, and user onboarding. Critical for getting your product in front of the right people.
 
-MIT License - see LICENSE file for details.
+
+### 💼 Business Operations
+Your financial and operational advisor. Assists with business setup, legal requirements, tool selection, and operational efficiency. Ensures your business foundation is solid and compliant.
+
+
+### 🗺️ Smart Routing
+Your intelligent task router. Run `/roadmap` to analyze your project roadmap and let the framework automatically suggest which agent is best suited for your next epic, story, or task. Perfect for staying focused and efficient.
+
+
+## 🛠️ **Available Commands**
+
+- `bushi cleanup` - Remove Bushi Framework completely
+- `bushi info` - Show framework information and version
