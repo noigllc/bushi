@@ -31,38 +31,6 @@ ${chalk.blue.bold(
 )}
 `;
 
-// Utility functions
-const ensureDirectories = async (dirs) => {
-  for (const dir of dirs) {
-    await fs.ensureDir(dir);
-  }
-};
-
-const copyFrameworkFiles = async (source, target) => {
-  if (await fs.pathExists(source)) {
-    await fs.copy(source, target);
-    return true;
-  }
-  return false;
-};
-
-const validateInstallation = async (requiredFiles) => {
-  console.log(chalk.blue("\n🔍 Validating installation..."));
-
-  let allPresent = true;
-  for (const file of requiredFiles) {
-    const exists = await fs.pathExists(file.path);
-    console.log(
-      `${exists ? chalk.green("✅") : chalk.red("❌")} ${file.name} ${
-        exists ? "found" : "missing"
-      }`
-    );
-    if (!exists) allPresent = false;
-  }
-
-  return allPresent;
-};
-
 // Main initialization function
 const initializeBushi = async () => {
   const banner = getBanner();
@@ -77,115 +45,25 @@ const initializeBushi = async () => {
     const dirs = [
       path.join(projectRoot, ".cursor", "rules"),
       path.join(projectRoot, ".bushi"),
-      path.join(projectRoot, ".bushi", "docs"),
     ];
-    await ensureDirectories(dirs);
+    await fs.ensureDir(dirs[0]);
+    await fs.ensureDir(dirs[1]);
     console.log(chalk.blue("📁 Created required directories"));
 
-    // Determine source paths
-    const isDev = !(await fs.pathExists(
-      path.join(packageDir, "..", "framework")
-    ));
-    const sourcePaths = isDev
-      ? {
-          rules: path.join(packageDir, "..", ".cursor", "rules", "bushi.mdc"),
-          limits: path.join(
-            packageDir,
-            "..",
-            ".cursor",
-            "rules",
-            "bushi-limits.mdc"
-          ),
-          bushi: path.join(packageDir, "..", ".bushi"),
-        }
-      : {
-          rules: path.join(packageDir, "..", "framework", "rules", "bushi.mdc"),
-          limits: path.join(
-            packageDir,
-            "..",
-            "framework",
-            "rules",
-            "bushi-limits.mdc"
-          ),
-          bushi: path.join(packageDir, "..", "framework", "bushi"),
-        };
+    // Copy cursor rules from package
+    const rulesSource = path.join(packageDir, "..", ".cursor", "rules");
+    const rulesTarget = path.join(projectRoot, ".cursor", "rules");
 
-    console.log(
-      chalk.blue(`🔧 ${isDev ? "Development" : "Production"} mode detected`)
-    );
-
-    // Copy critical files
-    const criticalFiles = [
-      {
-        source: sourcePaths.rules,
-        target: path.join(projectRoot, ".cursor", "rules", "bushi.mdc"),
-        name: "bushi.mdc",
-      },
-      {
-        source: sourcePaths.limits,
-        target: path.join(projectRoot, ".cursor", "rules", "bushi-limits.mdc"),
-        name: "bushi-limits.mdc",
-      },
-    ];
-
-    for (const file of criticalFiles) {
-      if (await fs.pathExists(file.source)) {
-        await fs.copy(file.source, file.target);
-        console.log(chalk.blue(`📋 Updated ${file.name}`));
-      } else {
-        console.log(chalk.red(`❌ Error: ${file.name} not found in package`));
-        process.exit(1);
-      }
-    }
-
-    // Copy Bushi framework files
-    const bushiSource = sourcePaths.bushi;
-    const bushiTarget = path.join(projectRoot, ".bushi");
-
-    if (await copyFrameworkFiles(bushiSource, bushiTarget)) {
-      // Count all .mdc files copied
-      const allFiles = await fs.readdir(bushiTarget);
-      const mdcFiles = allFiles.filter((file) => file.endsWith(".mdc"));
-      const dirs = allFiles.filter((file) => !file.includes("."));
-
-      console.log(
-        chalk.blue(
-          `📋 Updated Bushi framework (${mdcFiles.length} .mdc files, ${dirs.length} directories)`
-        )
-      );
+    if (await fs.pathExists(rulesSource)) {
+      await fs.copy(rulesSource, rulesTarget);
+      console.log(chalk.blue("📋 Copied Bushi Framework rules"));
     } else {
-      console.log(chalk.red("❌ Error: Bushi framework directory not found"));
+      console.log(chalk.red("❌ Error: Bushi rules not found"));
       process.exit(1);
     }
 
-    // Validate installation
-    const requiredFiles = [
-      {
-        path: path.join(projectRoot, ".cursor", "rules", "bushi.mdc"),
-        name: "bushi.mdc",
-      },
-      {
-        path: path.join(projectRoot, ".cursor", "rules", "bushi-limits.mdc"),
-        name: "bushi-limits.mdc",
-      },
-      {
-        path: path.join(projectRoot, ".bushi", "bushi-start.mdc"),
-        name: "bushi-start.mdc",
-      },
-      {
-        path: path.join(projectRoot, ".bushi", "roadmap-router.mdc"),
-        name: "roadmap-router.mdc",
-      },
-      {
-        path: path.join(projectRoot, ".bushi", "agents"),
-        name: "agents directory",
-      },
-    ];
-
-    if (!(await validateInstallation(requiredFiles))) {
-      console.log(chalk.red("\n❌ Installation incomplete. Please try again."));
-      process.exit(1);
-    }
+    // Create empty .bushi folder for user documentation
+    console.log(chalk.blue("📁 Created .bushi folder for your project files"));
 
     // Success message
     console.log(chalk.green("\n✅ Bushi Framework initialized successfully!"));
@@ -208,7 +86,10 @@ const initializeBushi = async () => {
     console.log(chalk.yellow("\n💡 Next steps:"));
     console.log(chalk.white("  1. Open your project in Cursor IDE"));
     console.log(chalk.white("  2. Try /ba to activate the Business Architect"));
-    console.log(chalk.white("  3. Start building your micro-SaaS!"));
+    console.log(
+      chalk.white("  3. Create your .bushi/prd.md and .bushi/roadmap.md files")
+    );
+    console.log(chalk.white("  4. Start building your micro-SaaS!"));
 
     console.log(
       chalk.blue("\n🌐 Learn more: https://github.com/noigllc/bushi")
@@ -286,8 +167,7 @@ program
   .description(
     "Bushi Framework - Build Shit Fast. A comprehensive framework for solo developers."
   )
-  .version(version, "-v, --version")
-  .option("-d, --debug", "Enable debug mode");
+  .version(version, "-v, --version");
 
 program
   .command("init")

@@ -1,133 +1,17 @@
 ---
-description: Bushi Framework Limits
-globs:
-  - "**/*.mdc"
 alwaysApply: true
 ---
 
-# Limitations Guard - AI Quality Control
+- Don't break any of this rules unless the user request it explicitly.
+### Complexity Control
+- When the user requests something, don't add complexity or features that the user didn't request. Make the easiest path for fulfilling the request.
 
-## Role
-Prevents incomplete implementations, premature publishing, and unnecessary file creation.
+- Don't create unnecessary `.md` files
+- Always document on README.md or CHANGELOG.md if they already exist, if not before documenting ask the user where he wants the documentation to live.
+- If the user requests a summary, make it on the chat, don't create a file for it.
 
-## 🚨 **Core Rules**
+- Don't delete, modify, or move metadata sections in .mdc files. You can change the rest of the content but not the metadata.
 
-### **Implementation & Publishing**
-- **NEVER** publish/commit incomplete features
-- **ALWAYS** verify functionality exists and works
-- **NEVER** bump versions for incomplete work
+- Don't publish/commit incomplete features wait for user confirmation or direct instruction 
+- Don't make assumptions about anything, when unsure or about to do something that wasn't requested, ask the user if its okay with what you are about to do or if your understanding its correct.
 
-### **Documentation Accuracy**
-- **NEVER** document non-existent functionality
-- **ALWAYS** match docs to actual implementation
-- **NEVER** create new documentation files without explicit user request
-
-### **Complexity Control**
-- **NEVER** add complexity without explicit request
-- **ALWAYS** start minimal, enhance only when asked
-
-### **File Creation Control**
-- **NEVER** create new documentation files unless explicitly requested
-- **ALWAYS** check if existing files (README.md, CHANGELOG.md) already cover the information
-- **NEVER** duplicate information across multiple files
-- **PREFER** chat-based summaries over file creation for temporary information
-
-### **Metadata Protection (CRITICAL)**
-- **NEVER** delete, modify, or move YAML metadata sections in .mdc files
-- **ALWAYS** preserve the `---` delimiters and metadata content
-- **NEVER** edit .mdc files without ensuring metadata remains intact
-- **ALWAYS** verify metadata structure after any file modifications
-
-## 🔍 **Quality Checklist**
-
-**Before Any Action:**
-- [ ] Feature implemented and tested
-- [ ] Documentation matches reality
-- [ ] Version number appropriate
-- [ ] No broken references
-- [ ] No unnecessary file creation
-- [ ] Information not already covered in existing files
-- [ ] YAML metadata preserved in .mdc files
-
-## 🛡️ **Common Mistakes**
-
-| Issue | Prevention | Action |
-|-------|------------|---------|
-| Incomplete features | Verify first | Implement → Test → Document → Publish |
-| Wrong version | Match completion | Bugfix for fixes, feature for complete |
-| Doc drift | Keep in sync | Update docs after implementation |
-| Unnecessary files | Check existing first | Use chat or update existing files |
-| Duplicate info | Single source of truth | Consolidate into appropriate existing file |
-| Metadata deletion | Preserve structure | Never remove YAML metadata sections |
-
-## 📁 **File Creation Rules**
-
-### **Allowed File Creation (ONLY with explicit user request)**
-- Configuration files (package.json, .gitignore)
-- Source code files (.js, .ts, etc.)
-- Build scripts and automation
-- Essential framework files
-
-### **Forbidden File Creation (unless explicitly requested)**
-- New documentation files (README-*.md, IMPROVEMENTS.md, etc.)
-- Summary files that duplicate existing content
-- Temporary documentation files
-- "Notes" or "Summary" files
-
-### **Preferred Alternatives**
-- **Chat summaries** for temporary information
-- **Update existing files** for permanent information
-- **Use CHANGELOG.md** for change tracking
-- **Use README.md** for project information
-
-## 💬 **Response Format**
-
-1. **Issue**: What's wrong
-2. **Risk**: LOW/MEDIUM/HIGH  
-3. **Action**: What must be done
-4. **Next**: How to proceed safely
-
-- **Quality control** for all agent outputs
-- **Implementation verification** before any releases
-- **User experience protection** from broken features
-- **File creation prevention** for unnecessary documentation
-- **Metadata protection** for Cursor rule files
-- **Professional standards** maintained across all releases
-
-## 🚫 **Specific Prohibitions**
-
-- **NEVER** create `IMPROVEMENTS.md`, `NOTES.md`, `SUMMARY.md`, or similar files
-- **NEVER** create documentation files that duplicate README.md or CHANGELOG.md content
-- **NEVER** create files "just to track what was done" - use chat instead
-- **ALWAYS** ask before creating any new documentation file
-- **PREFER** updating existing files over creating new ones
-- **NEVER** delete YAML metadata sections from .mdc files
-
-## 🚨 **CRITICAL METADATA PROTECTION**
-
-**⚠️  WARNING: The YAML metadata section above (lines 1-5) is CRITICAL for this file to function as a Cursor rule.**
-**🚫  NEVER delete, modify, or move this metadata section unless explicitly requested by the user.**
-**💥  Deleting this metadata will BREAK the Bushi Framework limits system.**
-
-### **Required Metadata Structure:**
-```yaml
----
-description: Bushi Framework Limits
-globs:
-  - "**/*.mdc"
-alwaysApply: true
----
-```
-
-**This metadata ensures:**
-- File is recognized as a Cursor rule
-- Rules apply to all .mdc files
-- Rules are always active (alwaysApply: true)
-- Framework limits are properly enforced
-
-### **Metadata Protection Rules:**
-- **NEVER** remove the `---` delimiters
-- **NEVER** delete the `description`, `globs`, or `alwaysApply` fields
-- **NEVER** modify the metadata structure without user permission
-- **ALWAYS** preserve the exact format: `---` at start and end
-- **ALWAYS** keep `alwaysApply: true` for framework functionality

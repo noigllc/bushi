@@ -1,4 +1,4 @@
-# Bushi Framework - Product Requirements Document (PRD)
+# Bushi Framework - Product Requirements Document (prd)
 
 ## 📋 **1. Product Overview**
 **Product Name**: Bushi Framework  
@@ -59,8 +59,3 @@
 - System prevents analysis paralysis
 - Users complete projects faster than without Bushi
 - Framework works for multiple project types
-
----
-*Document created: [Current Date]*
-*Status: Active PRD*
-*Last updated: [Current Date]*

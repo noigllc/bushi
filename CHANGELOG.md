@@ -1,3 +1,87 @@
+# Changelog
+
+## [0.6.5] - 2024-01-16
+
+### 🧹 **Major Simplification & Complexity Removal**
+
+#### **Eliminated Unnecessary Complexity**
+- **Removed `framework/` folder entirely** - No more duplicate file structure
+- **Simplified CLI logic** - Removed development/production mode detection
+- **Streamlined build process** - Single build command, no more complex distribution logic
+- **Eliminated redundant file copying** - CLI now copies directly from `.cursor/rules/`
+
+#### **Simplified Architecture**
+- **CLI copies directly** from `.cursor/rules/` to user's project
+- **Creates empty `.bushi/` folder** for user to create their own documentation
+- **No more template files** - Users create prd.md and roadmap.md themselves
+- **Single source of truth** - All framework files live in `.cursor/rules/`
+
+#### **What Changed**
+- **Before**: Complex framework folder + development/production logic + template files
+- **After**: Direct copy from `.cursor/rules/` + empty `.bushi/` folder
+- **Result**: Simpler, faster, more maintainable system
+
+#### **Benefits**
+- ✅ **Faster installation** - No unnecessary file operations
+- ✅ **Easier maintenance** - Single source of truth
+- ✅ **Less confusion** - Clear file structure
+- ✅ **Smaller package size** - No duplicate files
+- ✅ **Simpler debugging** - Direct file references
+
+---
+
+## [0.6.4] - 2024-01-16
+
+### 🚀 Major Restructuring & Improvements
+
+#### **Cursor Rules Enhancement**
+- **Added compelling introductions** for all agent files:
+  - 🏗️ Business Architect: Strategic partner for business model validation
+  - 🎨 Design Experience: UX/UI transformation specialist
+  - ⚙️ Technical Architect: Technical foundation builder
+  - 🚀 Growth Strategist: Customer acquisition strategist
+  - 💼 Business Operations: Operational foundation specialist
+
+#### **File Reference System Fixes**
+- **Fixed all broken file references** in cursor rules
+- Updated `@bushi-start.mdc` → `@.cursor/rules/bushi-start.mdc`
+- Updated `@agents/` → `@.cursor/rules/agents/`
+- Maintained `@.bushi/` references for user project files (correct)
+
+#### **CLI Installation Process Overhaul**
+- **Restructured framework delivery system**:
+  - `.cursor/rules/` now contains the framework (agents, commands)
+  - `.bushi/` now only contains user project templates
+  - CLI copies cursor rules to user's `.cursor/rules/` folder
+  - CLI creates user project structure in `.bushi/` folder
+- **Fixed installation validation** to check for correct files
+- **Updated success messages** to guide users properly
+
+#### **User Experience Improvements**
+- **Template files created** for immediate use:
+  - `prd.md` - Product Requirements Document template
+  - `roadmap.md` - Project Roadmap template
+- **Clear separation** between framework files and user project files
+- **Improved onboarding flow** with proper file structure
+
+#### **Technical Architecture**
+- **Framework directory structure** properly organized
+- **Build process updated** to handle new structure
+- **Distribution package** now correctly delivers cursor rules
+
+### 🔧 Breaking Changes
+- **CLI installation process** completely restructured
+- **File locations** changed from `@.bushi/` to `.cursor/rules/` for framework files
+- **User project files** now created in `.bushi/` folder only
+
+### ✅ What Works Now
+- All agent commands (`/ba`, `/dx`, `/ta`, `/gs`, `/bo`) properly reference working files
+- CLI installation creates correct file structure
+- Users get working cursor rules + project templates
+- Framework and user files are properly separated
+
+---
+
 # 📋 Bushi Framework Changelog
 
 All notable changes to the Bushi Framework will be documented in this file.
