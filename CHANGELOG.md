@@ -5,6 +5,19 @@ All notable changes to the Bushi Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.1] - 2024-12-19 - README Improvements & Documentation
+
+### Changed
+- **README Structure** - Reorganized for better logical flow and clarity
+- **Installation Guide** - Fixed Quick Start section to show 3 actual steps
+- **Folder Structure** - Added complete explanation of all framework files and user docs
+- **Documentation Clarity** - Removed version information and focused on usage
+
+### Fixed
+- **Quick Start Steps** - Now shows 3 logical steps instead of claiming 3 but showing 2
+- **Missing Files** - Added `bushi-start.mdc` and `roadmap-router.mdc` to folder structure
+- **User vs Framework** - Clarified difference between framework files and user documentation
+
 ## [0.6.0] - 2024-12-19 - Major Framework Modernization & Cleanup
 
 ### Added
