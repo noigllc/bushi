@@ -138,17 +138,23 @@ const initializeBushi = async () => {
       }
     }
 
-    // Copy agents
-    const agentsSource = path.join(sourcePaths.bushi, "agents");
-    const agentsTarget = path.join(projectRoot, ".bushi", "agents");
+    // Copy Bushi framework files
+    const bushiSource = sourcePaths.bushi;
+    const bushiTarget = path.join(projectRoot, ".bushi");
 
-    if (await copyFrameworkFiles(agentsSource, agentsTarget)) {
-      const agentFiles = await fs.readdir(agentsTarget);
+    if (await copyFrameworkFiles(bushiSource, bushiTarget)) {
+      // Count all .mdc files copied
+      const allFiles = await fs.readdir(bushiTarget);
+      const mdcFiles = allFiles.filter((file) => file.endsWith(".mdc"));
+      const dirs = allFiles.filter((file) => !file.includes("."));
+
       console.log(
-        chalk.blue(`📋 Updated Bushi agents (${agentFiles.length} files)`)
+        chalk.blue(
+          `📋 Updated Bushi framework (${mdcFiles.length} .mdc files, ${dirs.length} directories)`
+        )
       );
     } else {
-      console.log(chalk.red("❌ Error: agents directory not found"));
+      console.log(chalk.red("❌ Error: Bushi framework directory not found"));
       process.exit(1);
     }
 
@@ -161,6 +167,14 @@ const initializeBushi = async () => {
       {
         path: path.join(projectRoot, ".cursor", "rules", "bushi-limits.mdc"),
         name: "bushi-limits.mdc",
+      },
+      {
+        path: path.join(projectRoot, ".bushi", "bushi-start.mdc"),
+        name: "bushi-start.mdc",
+      },
+      {
+        path: path.join(projectRoot, ".bushi", "roadmap-router.mdc"),
+        name: "roadmap-router.mdc",
       },
       {
         path: path.join(projectRoot, ".bushi", "agents"),

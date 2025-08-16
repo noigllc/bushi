@@ -79,36 +79,18 @@ const buildFramework = async () => {
       "CLI binary"
     );
 
-    // Copy framework files
-    if (await fs.pathExists(CONFIG.frameworkDir)) {
-      // If framework directory exists, copy its contents
-      const frameworkContents = await fs.readdir(CONFIG.frameworkDir);
-      for (const item of frameworkContents) {
-        const sourcePath = path.join(CONFIG.frameworkDir, item);
-        const targetPath = path.join(CONFIG.distDir, "framework", item);
-        await fs.copy(sourcePath, targetPath);
-      }
-      log("Copied framework files", "success");
-    } else {
-      log("Framework directory not found, creating structure...", "warning");
+    // Create framework structure
+    const rulesDir = path.join(CONFIG.distDir, "framework", "rules");
+    const bushiDir = path.join(CONFIG.distDir, "framework", "bushi");
 
-      // Create framework structure
-      const rulesDir = path.join(CONFIG.distDir, "framework", "rules");
-      const bushiDir = path.join(CONFIG.distDir, "framework", "bushi");
+    await ensureDir(rulesDir);
+    await ensureDir(bushiDir);
 
-      await ensureDir(rulesDir);
-      await ensureDir(bushiDir);
+    // Copy Cursor rules
+    await copyFile(CONFIG.sourceDirs.cursor, rulesDir, "Cursor rules");
 
-      // Copy Cursor rules
-      await copyFile(CONFIG.sourceDirs.cursor, rulesDir, "Cursor rules");
-
-      // Copy Bushi framework files
-      await copyFile(
-        CONFIG.sourceDirs.bushi,
-        bushiDir,
-        "Bushi framework files"
-      );
-    }
+    // Copy Bushi framework files
+    await copyFile(CONFIG.sourceDirs.bushi, bushiDir, "Bushi framework files");
 
     // Make CLI executable
     const cliPath = path.join(CONFIG.distDir, "bin", "cli.js");
@@ -152,11 +134,11 @@ const buildDistribution = async () => {
     await ensureDir(userBushiDir);
     await ensureDir(userCursorDir);
 
-    // Copy user agents
+    // Copy all Bushi framework files
     await copyFile(
-      path.join(CONFIG.sourceDirs.bushi, "agents"),
-      path.join(userBushiDir, "agents"),
-      "user agents"
+      CONFIG.sourceDirs.bushi,
+      userBushiDir,
+      "Bushi framework files"
     );
 
     // Create docs directory
