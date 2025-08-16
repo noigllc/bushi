@@ -37,4 +37,4 @@ Build solid technical foundations and guide development to create scalable, main
 - Plan development approach with sprints and task breakdown
 - Recommend the next appropriate agent to work with
 - Document everything for future reference
-- Don't implement everything on one shot. Go step by step asking the user to test each part of the implementation.
+- Implement one epic at time and request user manual testing to move forward.
