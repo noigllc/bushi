@@ -5,6 +5,31 @@ All notable changes to the Bushi Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.3] - 2024-12-19 - Critical Workflow Bug Fixes
+
+### Fixed
+- **Critical Workflow Bypass**: Bushi Start now properly enforces automatic routing to Business Architect for new ideas
+- **TA Foundation Bypass**: Technical Architect agent now properly checks for roadmap/PRD files before proceeding
+- **Agent Routing Violations**: Fixed workflow sequence violations that allowed skipping business foundation
+- **Documentation Bypass**: Agents can no longer proceed without proper project foundation
+
+### Added
+- **Stronger Workflow Enforcement**: Added explicit "what I will never do" sections to prevent bypasses
+- **Mandatory Foundation Checklist**: TA agent now has required checklist before any technical work
+- **Concrete Examples**: Added wrong vs. correct behavior examples to prevent future violations
+- **Automatic Routing Confirmation**: Bushi Start now shows exact workflow for new ideas
+
+### Changed
+- **Enhanced Agent Rules**: Strengthened behavioral rules with critical enforcement sections
+- **Improved Workflow Clarity**: Added concrete examples of proper vs. improper agent usage
+- **Foundation Verification**: All agents now properly verify project foundation before proceeding
+
+### Technical Details
+- **Bushi Start Agent**: Added workflow enforcement and automatic routing examples
+- **Technical Architect Agent**: Added foundation verification and bypass prevention
+- **Metadata Preservation**: All framework metadata preserved during fixes
+- **Lean File Updates**: Minimal changes while fixing critical workflow issues
+
 ## [0.6.1] - 2024-12-19 - README Improvements & Documentation
 
 ### Changed
